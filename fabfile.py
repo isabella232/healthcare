@@ -111,15 +111,29 @@ def download_copy():
     """
     Downloads a Google Doc as an .xls file.
     """
-    base_url = 'https://docs.google.com/spreadsheet/pub?key=%s&output=xls'
+    base_url = 'https://docs.google.com/spreadsheet/pub?key=%s&output=csv'
     doc_url = base_url % app_config.COPY_GOOGLE_DOC_KEY
-    local('curl -o data/copy.xls "%s"' % doc_url)
+    local('curl -o data/copy.csv "%s"' % doc_url)
 
 def update_copy():
     """
     Fetches the latest Google Doc and updates local JSON.
     """
     download_copy()
+
+def download_data():
+    """
+    Downloads a Google Spreadsheet as an .xls file.
+    """
+    base_url = 'https://docs.google.com/spreadsheet/pub?key=%s&output=csv'
+    doc_url = base_url % app_config.COPY_GOOGLE_SPREADSHEET_KEY
+    local('curl -o data/data.csv "%s"' % doc_url)
+
+def update_data():
+    """
+    Fetches the latest Google Spreadsheet and updates local JSON.
+    """
+    download_data()
 
 def app_config_js():
     """

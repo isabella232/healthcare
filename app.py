@@ -3,6 +3,7 @@
 import json
 from mimetypes import guess_type
 import urllib
+import csv
 
 import envoy
 from flask import Flask, Markup, abort, render_template
@@ -19,7 +20,12 @@ def index():
     """
     Example view demonstrating rendering a simple HTML page.
     """
-    return render_template('index.html', **make_context())
+    context = make_context()
+    
+    with open('data/data.csv', 'rb') as readfile:
+        context['faqs'] = list(csv.DictReader(readfile))
+        
+    return render_template('index.html', **context)
 
 @app.route('/widget.html')
 def widget():

@@ -1,0 +1,1 @@
+window.COPY = {"content": {"footer_title": "This content goes to 12", "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "header_title": "Across-The-Top Header"}, "attribute": {"byline": "Julie Rovner and Matt Stiles", "pubtime": 0.150694444444444, "pubdate": 41296.0}}

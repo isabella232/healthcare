@@ -15,7 +15,6 @@
 
 
 {% block content %}
-<h1>{{ PROJECT_NAME }}</h1>
 <div id="story-meta">
     <p class="byline">by <span>{{ COPY.attribution.byline }}</span></p>
     <p class="dateblock">
@@ -31,8 +30,10 @@
     {% endfor %}
 </dl>
 
-<h2>JST example</h2>
-<p id="template-example"></p>
+{% for faq in faqs %}
+<p>{{ faq.question }}</p>
+{% endfor %}
+
 {% endblock %}
 
 

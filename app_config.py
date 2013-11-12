@@ -77,12 +77,17 @@ DEBUG = True
 """
 COPY EDITING
 """
-COPY_GOOGLE_DOC_KEY = '0AlXMOHKxzQVRdHZuX1UycXplRlBfLVB0UVNldHJYZmc'
+COPY_GOOGLE_DOC_KEY = '0AjlIKRG8DtTqdDV3Rk5LRVc0c0MxZXI2ZV9XaUVaa1E'
+
+"""
+DATA EDITING
+"""
+COPY_GOOGLE_SPREADSHEET_KEY = '0AjlIKRG8DtTqdHZja0cyS0R4Q2YtQnU5RUpOTzZfZGc'
 
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'An opinionated project template for (mostly) server-less apps.'
+PROJECT_DESCRIPTION = 'An interactive FAQ on Obamacare.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 TWITTER = {

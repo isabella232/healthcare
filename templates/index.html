@@ -16,14 +16,14 @@
 
 {% block content %}
 <div id="story-meta">
-    <p class="byline">by <span>{{ COPY.attribution.byline }}</span></p>
+    <p class="byline">By <span>{{ COPY.attribution.byline }}</span></p>
     <p class="dateblock">
         <span class="date">{{ COPY.attribution.pubdate }}</span>
         <span class="time"> {{ COPY.attribution.pubtime }}</span>
     </p>
 </div>
 
-<h2>Example COPY list</h2>
+<h2>Questions...</h2>
 <dl>
     {% for row in COPY.example_list %}
     <dt>{{ row.term }}</dt><dd>{{ row.definition }}</dd>

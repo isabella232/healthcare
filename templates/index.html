@@ -24,14 +24,26 @@
 </div>
 
 <h2>Questions...</h2>
+
+<!-- Questions Grid -->
+<div class="row">
+    <div class="col-md-12">&nbsp;
+        <div id="questions-grid">
+        </div>
+    </div>
+</div>
+
 <dl>
     {% for row in COPY.example_list %}
     <dt>{{ row.term }}</dt><dd>{{ row.definition }}</dd>
     {% endfor %}
 </dl>
 
+
 {% for faq in faqs %}
 <p>{{ faq.question }}</p>
+<p>{{ faq.answer|safe }}</p>
+<p>{{ faq.category }}</p>
 {% endfor %}
 
 {% endblock %}

@@ -21,9 +21,12 @@ def index():
     Example view demonstrating rendering a simple HTML page.
     """
     context = make_context()
+    context['faqs'] = []
     
     with open('data/data.csv', 'rb') as readfile:
-        context['faqs'] = list(csv.DictReader(readfile))
+        for faq in list(csv.DictReader(readfile)):
+            faq['answer'] = faq['answer'].decode('utf-8')
+            context['faqs'].append(faq)
         
     return render_template('index.html', **context)
 

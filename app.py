@@ -14,12 +14,8 @@ from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
 
-# Example application views
 @app.route('/')
 def index():
-    """
-    Example view demonstrating rendering a simple HTML page.
-    """
     context = make_context()
     context['faqs'] = []
     
@@ -27,6 +23,8 @@ def index():
         for faq in list(csv.DictReader(readfile)):
             faq['answer'] = faq['answer'].decode('utf-8')
             context['faqs'].append(faq)
+
+    context['faqs_js'] = json.dumps(context['faqs'])
         
     return render_template('index.html', **context)
 

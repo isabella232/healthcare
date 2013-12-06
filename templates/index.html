@@ -23,6 +23,19 @@
     </p>
 </div>
 
+<h2>Search test</h2>
+
+<form id="search">
+    <label> Search:
+        <input type="text" id="query" />
+    </label>
+
+    <input type="submit" />
+</form>
+
+<ul id="results">
+</ul>
+
 <h2>Questions...</h2>
 
 <!-- Questions Grid -->
@@ -56,4 +69,10 @@
         <p>{{ COPY.content.lorem_ipsum }}</p>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_foot %}
+<script type="text/javascript">
+    window.FAQS = {{ faqs_js|safe }}
+</script>
 {% endblock %}

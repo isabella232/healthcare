@@ -13,7 +13,6 @@
 </header>
 {% endblock %}
 
-
 {% block content %}
 <div id="story-meta">
     <p class="byline">By <span>{{ COPY.attribution.byline }}</span></p>
@@ -22,15 +21,15 @@
         <span class="time"> {{ COPY.attribution.pubtime }}</span>
     </p>
 </div>
+{% endblock %}
 
+{% block wide_content %}
 <h2>Search test</h2>
 
 <form id="search">
     <label> Search:
         <input type="text" id="query" />
     </label>
-
-    <input type="submit" />
 </form>
 
 <ul id="results">
@@ -46,28 +45,14 @@
     </div>
 </div>
 
-<dl>
-    {% for row in COPY.example_list %}
-    <dt>{{ row.term }}</dt><dd>{{ row.definition }}</dd>
-    {% endfor %}
-</dl>
-
-
+<div id="faqs">
 {% for faq in faqs %}
-<p>{{ faq.question }}</p>
-<p>{{ faq.answer|safe }}</p>
-<p>{{ faq.category }}</p>
-{% endfor %}
-
-{% endblock %}
-
-
-{% block wide_content %}
-<div class="row">
-    <div class="col-md-12">
-        <h2>{{ COPY.content.footer_title }}</h2>
-        <p>{{ COPY.content.lorem_ipsum }}</p>
+    <div id="faq-{{ loop.index0 }}" class="faq">
+        <p>Q: {{ faq.question }}</p>
+        <p>A: {{ faq.answer|safe }}</p>
+        <p>{{ faq.category }}</p>
     </div>
+{% endfor %}
 </div>
 {% endblock %}
 

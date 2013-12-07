@@ -2,8 +2,9 @@ var $search_form = null;
 var $search_query = null;
 var $search_results = null;
 
-var faqs_index = null;
+var $faqs = [];
 
+var faqs_index = null;
 
 if (!String.prototype.trim) {  
     String.prototype.trim = function () {  
@@ -11,7 +12,7 @@ if (!String.prototype.trim) {
     };  
 } 
 
-function setup_search() {
+var setup_search = function() {
     faqs_index = lunr(function () {
         this.field('question', { boost: 10 })
         this.field('answer')
@@ -30,18 +31,29 @@ function setup_search() {
     }
 }
 
-function search_form_submit(e) {
-    e.preventDefault();
-
+var search = function(query) {
     $search_results.empty();
-    
-    var query = $search_query.val().trim();
+    //$faqs.hide();
+
     var results = faqs_index.search(query);
 
     for (var i = 0; i < results.length; i++) {
         var faq = FAQS[parseInt(results[i].ref)];
 
         $search_results.append('<li>' + faq.question + '</li>');
+        //$faqs.eq(i).show();
+    }  
+}
+
+var throttled_search = _.throttle(search, 250);
+
+var search_query_keyup = function(e) {
+    e.preventDefault();
+
+    var query = $search_query.val().trim();
+
+    if (query.length >= 3) {
+        throttled_search(query);
     }
 
     return false;
@@ -51,8 +63,9 @@ $(function() {
     $search_form = $('#search');
     $search_query = $('#query');
     $search_results = $('#results');
+    $faqs = $('.faq');
 
     setup_search();
 
-    $search_form.on('submit', search_form_submit); 
+    $search_query.on('keyup', search_query_keyup);
 });

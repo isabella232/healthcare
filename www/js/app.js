@@ -38,9 +38,10 @@ var search = function(query) {
     var results = faqs_index.search(query);
 
     for (var i = 0; i < results.length; i++) {
-        var faq = FAQS[parseInt(results[i].ref)];
+        var id = parseInt(results[i].ref);
+        var faq = FAQS[id];
 
-        $search_results.append('<li>' + faq.question + '</li>');
+        $search_results.append('<li><a href="#faq-' + id + '">' + faq.question + '</a></li>');
         //$faqs.eq(i).show();
     }  
 }

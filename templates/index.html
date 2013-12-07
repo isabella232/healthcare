@@ -1,49 +1,26 @@
 {% extends '_base.html' %}
 
-{% block header_content %}
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>{{ COPY.content.header_title }}</h1>
-                <h2>{{ COPY.content.lorem_ipsum }}</h2>
-            </div>
-        </div>
-    </div>
-</header>
-{% endblock %}
-
 {% block content %}
-<div id="story-meta">
+    <h1>{{ COPY.content.header_title }}</h1>
+
     <p class="byline">By <span>{{ COPY.attribution.byline }}</span></p>
     <p class="dateblock">
         <span class="date">{{ COPY.attribution.pubdate }}</span>
         <span class="time"> {{ COPY.attribution.pubtime }}</span>
     </p>
-</div>
+
+    <h2>What do you want to know?</h2>
+
+    <form id="search">
+        <label> Search:
+            <input type="text" id="query" />
+        </label>
+    </form>
 {% endblock %}
 
 {% block wide_content %}
-<h2>Search test</h2>
-
-<form id="search">
-    <label> Search:
-        <input type="text" id="query" />
-    </label>
-</form>
-
 <ul id="results">
 </ul>
-
-<h2>Questions...</h2>
-
-<!-- Questions Grid -->
-<div class="row">
-    <div class="col-md-12">&nbsp;
-        <div id="questions-grid">
-        </div>
-    </div>
-</div>
 
 <div id="faqs">
 {% for faq in faqs %}

@@ -1,7 +1,10 @@
 var $search_form = null;
 var $search_query = null;
 var $search_results = null;
+var $search_term = null;
+var $all_answers = null;
 var $results_list = null;
+var $faqs_wrapper = null;
 var $faqs = [];
 
 var faqs_index = null;
@@ -32,8 +35,10 @@ var setup_search = function() {
 }
 
 var search = function(query) {
+    $search_results.hide();
+    $all_answers.hide();
     $results_list.empty();
-    //$faqs.hide();
+    $faqs_wrapper.empty();
 
     var results = faqs_index.search(query);
 
@@ -42,9 +47,10 @@ var search = function(query) {
         var faq = FAQS[id];
 
         $results_list.append('<li><a href="#faq-' + id + '">' + faq.question + '</a></li>');
-        //$faqs.eq(i).show();
+        $faqs_wrapper.append($faqs.eq(id).clone());
     }  
 
+    $search_term.text(query);
     $search_results.show();
 }
 
@@ -57,7 +63,9 @@ var search_query_keyup = function(e) {
 
     if (query.length >= 3) {
         throttled_search(query);
-    } else if (query.length == 0) {
+    } else {
+        $all_answers.show();
+        $faqs_wrapper.html($faqs.clone());
         $search_results.hide();
     }
 
@@ -68,8 +76,14 @@ $(function() {
     $search_form = $('#search');
     $search_query = $('#query');
     $search_results = $('#results');
+    $search_term = $('#term');
+    $all_answers = $('#all-answers');
     $results_list = $('#results ul');
-    $faqs = $('.faq');
+    $faqs_wrapper = $('#faqs');
+
+    // Make a copy of all FAQs on the page so we can easily
+    // recreate them when we reorder them
+    $faqs = $('.faq').clone();
 
     setup_search();
 

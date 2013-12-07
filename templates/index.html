@@ -20,18 +20,19 @@
 
 {% block wide_content %}
 <div id="results">
-    <h2>Best matches for your search</h2>
+    <h2>Answers related to <em><span id="term"></span></em></h2>
 
     <ul>
     </ul>
 </div>
 
+<div id="all-answers">All answers</div>
+
 <div id="faqs">
 {% for faq in faqs %}
     <div id="faq-{{ loop.index0 }}" class="faq">
-        <p>Q: {{ faq.question }}</p>
-        <p>A: {{ faq.answer|safe }}</p>
-        <p>{{ faq.category }}</p>
+        <div class="question">{{ faq.question }}</div>
+        <div class="answer">{{ faq.answer|safe }}</div>
     </div>
 {% endfor %}
 </div>

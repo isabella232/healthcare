@@ -1,7 +1,7 @@
 var $search_form = null;
 var $search_query = null;
 var $search_results = null;
-
+var $results_list = null;
 var $faqs = [];
 
 var faqs_index = null;
@@ -32,7 +32,7 @@ var setup_search = function() {
 }
 
 var search = function(query) {
-    $search_results.empty();
+    $results_list.empty();
     //$faqs.hide();
 
     var results = faqs_index.search(query);
@@ -41,9 +41,11 @@ var search = function(query) {
         var id = parseInt(results[i].ref);
         var faq = FAQS[id];
 
-        $search_results.append('<li><a href="#faq-' + id + '">' + faq.question + '</a></li>');
+        $results_list.append('<li><a href="#faq-' + id + '">' + faq.question + '</a></li>');
         //$faqs.eq(i).show();
     }  
+
+    $search_results.show();
 }
 
 var throttled_search = _.throttle(search, 250);
@@ -55,6 +57,8 @@ var search_query_keyup = function(e) {
 
     if (query.length >= 3) {
         throttled_search(query);
+    } else if (query.length == 0) {
+        $search_results.hide();
     }
 
     return false;
@@ -64,6 +68,7 @@ $(function() {
     $search_form = $('#search');
     $search_query = $('#query');
     $search_results = $('#results');
+    $results_list = $('#results ul');
     $faqs = $('.faq');
 
     setup_search();

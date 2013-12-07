@@ -165,7 +165,7 @@ def render():
     """
     from flask import g
 
-    update_copy()
+    #update_copy()
     less()
     jst()
 

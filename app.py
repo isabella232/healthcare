@@ -28,6 +28,20 @@ def index():
         
     return render_template('index.html', **context)
 
+@app.route('/make_search_index.html')
+def make_search_index():
+    context = make_context()
+    context['faqs'] = []
+    
+    with open('data/data.csv', 'rb') as readfile:
+        for faq in list(csv.DictReader(readfile)):
+            faq['answer'] = faq['answer'].decode('utf-8')
+            context['faqs'].append(faq)
+
+    context['faqs_js'] = json.dumps(context['faqs'])
+
+    return render_template('make_search_index.html', **context)
+
 @app.route('/widget.html')
 def widget():
     """

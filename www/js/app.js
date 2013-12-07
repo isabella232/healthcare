@@ -13,6 +13,10 @@ if (!String.prototype.trim) {
 } 
 
 var setup_search = function() {
+    // NB: This works, but the rendered data is quite large.
+    // Need to test performance on mobile
+    //faqs_index = lunr.Index.load(SEARCH_INDEX);
+
     faqs_index = lunr(function () {
         this.field('question', { boost: 10 })
         this.field('answer')

@@ -33,7 +33,7 @@
 <div id="faqs">
 {% for faq in faqs %}
     <div id="faq-{{ loop.index0 }}" class="faq">
-        <h3 class="question">{{ faq.question }}</h3>
+        <h3 class="question">{{ faq.question|safe }}</h3>
         <div class="answer">{{ faq.answer|safe }}</div>
         {% if faq.tags.strip() %}
         <ul class="tags">

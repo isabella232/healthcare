@@ -17,6 +17,7 @@ if (!String.prototype.trim) {
 
 var setup_search = function() {
     faqs_index = lunr(function () {
+        this.field('tags', { boost: 100 })
         this.field('question', { boost: 10 })
         this.field('answer')
         this.ref('id')
@@ -28,6 +29,7 @@ var setup_search = function() {
 
         faqs_index.add({
             id: i,
+            tags: faq['tags'],
             question: faq['question'],
             answer: faq['answer']
         });

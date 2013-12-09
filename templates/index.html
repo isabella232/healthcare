@@ -33,6 +33,13 @@
     <div id="faq-{{ loop.index0 }}" class="faq">
         <div class="question">{{ faq.question }}</div>
         <div class="answer">{{ faq.answer|safe }}</div>
+        {% if faq.tags.strip() %}
+        <ul class="tags">
+            {% for tag in faq.tags.split(',') %}
+            <li>{{ tag.strip() }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div>
 {% endfor %}
 </div>

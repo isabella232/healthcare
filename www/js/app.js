@@ -36,7 +36,7 @@ var scroll_to = function($el) {
  */
 var toggle_answer = function() {
     event.preventDefault();
-    $(this).parent().next().toggleClass('in hide');
+    $(this).parent().next().toggleClass('closed');
     $(this).find('span').text(function(){
         if ($(this).text() == '+'){
             return '–';
@@ -86,16 +86,18 @@ var search = function(query) {
     $search_results.hide();
     $all_answers.hide();
     $results_list.empty();
-    $faqs_wrapper.find('.faq').addClass('hide');
+    $faqs_wrapper.empty();
 
     var results = faqs_index.search(query);
+
+    var delay = 0;
 
     for (var i = 0; i < results.length; i++) {
         var id = parseInt(results[i].ref);
         var faq = FAQS[id];
 
         //$results_list.append('<li><a href="#answer/' + id + '">' + faq.question + '</a></li>');
-        $faqs_wrapper.find('.faq').eq(id).removeClass('hide');
+        $faqs_wrapper.append($faqs.eq(id).clone().addClass('new-item'));
     }  
 
     $search_term.text(query);
@@ -121,7 +123,7 @@ var on_search_query_keyup = function(e) {
         throttled_search(query);
     } else {
         $all_answers.show();
-        $faqs_wrapper.find('.faq').removeClass('hide');
+        $faqs_wrapper.html($faqs.clone());
         $search_results.hide();
     }
 
@@ -169,7 +171,7 @@ $(function() {
 
     // Event handlers
     $search_query.on('keyup', on_search_query_keyup);
-    $questions.on('click', toggle_answer);
+    $faqs_wrapper.on('click', '.question a', toggle_answer);
 
     // Set up the hasher bits to grab the URL hash.
     hasher.changed.add(on_hash_changed);

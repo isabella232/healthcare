@@ -36,7 +36,7 @@
 {% for faq in faqs %}
     <div id="faq-{{ loop.index0 }}" class="faq">
         <h3 class="question"><a href="#">{{ faq.question|safe }}&nbsp;<span>+</span></a></h3>
-        <div class="answer-wrapper fade hide">
+        <div class="answer-wrapper closed">
             <div class="answer">{{ faq.answer|safe }}</div>
             {% if faq.tags.strip() %}
             <div class="tags">

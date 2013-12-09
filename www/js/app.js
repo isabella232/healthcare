@@ -66,9 +66,6 @@ var setup_search = function() {
  * Execute a search.
  */
 var search = function(query) {
-    // Ensure the query field is always in sync
-    $search_query.val(query);
-
     $search_results.hide();
     $all_answers.hide();
     $results_list.empty();
@@ -103,6 +100,7 @@ var on_search_query_keyup = function(e) {
     var query = $search_query.val().trim();
 
     if (query.length >= 3) {
+        hasher.setHash('search/' + query);
         throttled_search(query);
     } else {
         $all_answers.show();
@@ -122,7 +120,8 @@ var on_hash_changed = function(new_hash, old_hash) {
     var hash_args = bits[1];
 
     if (hash_type == 'search') {
-        search(hash_args);
+        $search_query.val(hash_args);
+        throttled_search(hash_args);
     } else if (hash_type == 'answer') {
         var $faq = $('#faq-' + hash_args);
         scroll_to($faq);

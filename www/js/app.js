@@ -9,6 +9,7 @@ var $all_answers = null;
 var $results_list = null;
 var $faqs_wrapper = null;
 var $faqs = [];
+var $questions = null;
 
 var faqs_index = null;
 
@@ -28,6 +29,22 @@ var scroll_to = function($el) {
     var top = $el.offset().top;
     console.log(top);
     $body.scrollTop(top);
+};
+
+/*
+ * Scroll to a given element.
+ */
+var toggle_answer = function() {
+    event.preventDefault();
+    $(this).parent().next().toggleClass('in hide');
+    $(this).find('span').text(function(){
+        if ($(this).text() == '+'){
+            return '–';
+        } else {
+            return '+';
+        }
+    });
+        
 };
 
 /*
@@ -142,6 +159,7 @@ $(function() {
     $all_answers = $('#all-answers');
     $results_list = $('#results ul');
     $faqs_wrapper = $('#faqs');
+    $questions = $('.question a');
 
     // Make a copy of all FAQs on the page so we can easily
     // recreate them when we reorder them
@@ -151,6 +169,7 @@ $(function() {
 
     // Event handlers
     $search_query.on('keyup', on_search_query_keyup);
+    $questions.on('click', toggle_answer);
 
     // Set up the hasher bits to grab the URL hash.
     hasher.changed.add(on_hash_changed);

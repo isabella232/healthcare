@@ -12,9 +12,10 @@
     <h2>What do you want to know?</h2>
 
     <form id="search">
-        <label> Search:
-            <input type="text" id="query" />
-        </label>
+        <div class="form-group">
+            <label for="query" class="sr-only"> Search:</label>
+            <input class="form-control input-lg" placeholder="Search" type="text" id="query" />
+        </div>
     </form>
 {% endblock %}
 
@@ -33,15 +34,20 @@
 <div id="faqs">
 {% for faq in faqs %}
     <div id="faq-{{ loop.index0 }}" class="faq">
-        <h3 class="question">{{ faq.question|safe }}</h3>
-        <div class="answer">{{ faq.answer|safe }}</div>
-        {% if faq.tags.strip() %}
-        <ul class="tags">
-            {% for tag in faq.tags.split(',') %}
-            <li><a href="#search/{{ tag.strip().lower() }}">Show answers to all questions about <em>{{ tag.strip() }}</em></a></li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+        <h3 class="question"><a href="#">{{ faq.question|safe }}&nbsp;<span>+</span></a></h3>
+        <div class="answer-wrapper fade hide">
+            <div class="answer">{{ faq.answer|safe }}</div>
+            {% if faq.tags.strip() %}
+            <div class="tags">
+                <h4>Related answers</h4>
+                <ul class="list-unstyled">
+                    {% for tag in faq.tags.split(',') %}
+                    <li><a href="#search/{{ tag.strip().lower() }}">{{ tag.strip() }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
     </div>
 {% endfor %}
 </div>

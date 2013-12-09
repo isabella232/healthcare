@@ -163,7 +163,7 @@ header {
             &:before {
             	content: ' ';
             	display: block;
-            	border-top: 2px solid #000;
+            	border-top: 1px solid @gray-light;
             	margin: 0 @grid-gutter-width / 2 @line-height-computed; 
             }
 
@@ -211,6 +211,11 @@ header {
             	a {
             		color: @link-color;
             	}
+            }
+
+            .answer,
+            .tags {
+            	padding-top: @line-height-computed / 2;
             }
 
             .answer {

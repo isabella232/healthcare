@@ -86,7 +86,7 @@ var search = function(query) {
     $search_results.hide();
     $all_answers.hide();
     $results_list.empty();
-    $faqs_wrapper.empty();
+    $faqs_wrapper.find('.faq').addClass('hide');
 
     var results = faqs_index.search(query);
 
@@ -94,8 +94,8 @@ var search = function(query) {
         var id = parseInt(results[i].ref);
         var faq = FAQS[id];
 
-        $results_list.append('<li><a href="#answer/' + id + '">' + faq.question + '</a></li>');
-        $faqs_wrapper.append($faqs.eq(id).clone());
+        //$results_list.append('<li><a href="#answer/' + id + '">' + faq.question + '</a></li>');
+        $faqs_wrapper.find('.faq').eq(id).removeClass('hide');
     }  
 
     $search_term.text(query);
@@ -121,7 +121,7 @@ var on_search_query_keyup = function(e) {
         throttled_search(query);
     } else {
         $all_answers.show();
-        $faqs_wrapper.html($faqs.clone());
+        $faqs_wrapper.find('.faq').removeClass('hide');
         $search_results.hide();
     }
 

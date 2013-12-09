@@ -97,7 +97,7 @@ var throttled_search = _.throttle(search, 250);
 var on_search_query_keyup = function(e) {
     e.preventDefault();
 
-    var query = $search_query.val().trim();
+    var query = $search_query.val();
 
     if (query.length >= 3) {
         hasher.setHash('search/' + query);

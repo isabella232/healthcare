@@ -38,7 +38,7 @@
         {% if faq.tags.strip() %}
         <ul class="tags">
             {% for tag in faq.tags.split(',') %}
-            <li><a href="#search/{{ tag.strip() }}">Show answers to all questions about <em>{{ tag.strip() }}</em></a></li>
+            <li><a href="#search/{{ tag.strip().lower() }}">Show answers to all questions about <em>{{ tag.strip() }}</em></a></li>
             {% endfor %}
         </ul>
         {% endif %}

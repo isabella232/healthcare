@@ -131,7 +131,7 @@ def download_data():
 
 def update_data():
     """
-    Fetches the latest Google Spreadsheet and updates local JSON.
+    Fetches the latest Google Spreadsheet and updates local CSV.
     """
     download_data()
 

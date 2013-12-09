@@ -1,3 +1,6 @@
+var MOBILE = Modernizr.touch;
+
+var $body = null;
 var $search_form = null;
 var $search_query = null;
 var $search_results = null;
@@ -9,12 +12,35 @@ var $faqs = [];
 
 var faqs_index = null;
 
+/*
+ * Strip whitespace from strings.
+ */
 if (!String.prototype.trim) {  
     String.prototype.trim = function () {  
         return this.replace(/^\s+|\s+$/g,'');  
     };  
 } 
 
+/*
+ * Scroll to a given element.
+ */
+var scroll_to = function($el) {
+    var top = $el.offset().top;
+    console.log(top);
+    $body.scrollTop(top);
+};
+
+/*
+ * Jump back to the top of the page.
+ */
+var back_to_top = function() {
+    $body.scrollTo($content, { duration:450 }, 'y');
+    return false;
+};
+
+/*
+ * Create and populate the search index.
+ */
 var setup_search = function() {
     faqs_index = lunr(function () {
         this.field('tags', { boost: 100 })
@@ -36,7 +62,13 @@ var setup_search = function() {
     }
 }
 
+/*
+ * Execute a search.
+ */
 var search = function(query) {
+    // Ensure the query field is always in sync
+    $search_query.val(query);
+
     $search_results.hide();
     $all_answers.hide();
     $results_list.empty();
@@ -48,7 +80,7 @@ var search = function(query) {
         var id = parseInt(results[i].ref);
         var faq = FAQS[id];
 
-        $results_list.append('<li><a href="#faq-' + id + '">' + faq.question + '</a></li>');
+        $results_list.append('<li><a href="#answer/' + id + '">' + faq.question + '</a></li>');
         $faqs_wrapper.append($faqs.eq(id).clone());
     }  
 
@@ -56,9 +88,16 @@ var search = function(query) {
     $search_results.show();
 }
 
+/*
+ * A throttled version of the search, to run
+ * while typing.
+ */
 var throttled_search = _.throttle(search, 250);
 
-var search_query_keyup = function(e) {
+/*
+ * Execute throttled searches.
+ */
+var on_search_query_keyup = function(e) {
     e.preventDefault();
 
     var query = $search_query.val().trim();
@@ -74,7 +113,29 @@ var search_query_keyup = function(e) {
     return false;
 }
 
+/*
+ * Respond to url changes.
+ */
+var on_hash_changed = function(new_hash, old_hash) {
+    var bits = new_hash.split('/');
+    var hash_type = bits[0];
+    var hash_args = bits[1];
+
+    if (hash_type == 'search') {
+        search(hash_args);
+    } else if (hash_type == 'answer') {
+        var $faq = $('#faq-' + hash_args);
+        scroll_to($faq);
+    }
+
+    // TODO: use events instead
+    //_gaq.push(['_trackPageview', location.pathname + '#' + new_hash]);
+
+    return false;
+};
+
 $(function() {
+    $body = $('body');
     $search_form = $('#search');
     $search_query = $('#query');
     $search_results = $('#results');
@@ -89,5 +150,11 @@ $(function() {
 
     setup_search();
 
-    $search_query.on('keyup', search_query_keyup);
+    // Event handlers
+    $search_query.on('keyup', on_search_query_keyup);
+
+    // Set up the hasher bits to grab the URL hash.
+    hasher.changed.add(on_hash_changed);
+    hasher.initialized.add(on_hash_changed);
+    hasher.init();
 });

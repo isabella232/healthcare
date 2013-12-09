@@ -16,7 +16,10 @@
             <input type="text" id="query" />
         </label>
     </form>
+
+<!-- Questions Grid -->
 {% endblock %}
+
 
 {% block wide_content %}
 <div id="results">
@@ -26,12 +29,13 @@
     </ul>
 </div>
 
-<div id="all-answers">All answers</div>
+<h2 id="all-answers">All answers</h2>
+
 
 <div id="faqs">
 {% for faq in faqs %}
     <div id="faq-{{ loop.index0 }}" class="faq">
-        <div class="question">{{ faq.question }}</div>
+        <h3 class="question">{{ faq.question }}</h3>
         <div class="answer">{{ faq.answer|safe }}</div>
     </div>
 {% endfor %}
@@ -42,4 +46,5 @@
 <script type="text/javascript">
     window.FAQS = {{ faqs_js|safe }};
 </script>
+
 {% endblock %}

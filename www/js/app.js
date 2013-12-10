@@ -1,6 +1,7 @@
 var MOBILE = Modernizr.touch;
 
 var $body = null;
+var $content = null;
 var $search_form = null;
 var $search_query = null;
 var $search_results = null;
@@ -12,6 +13,7 @@ var $faqs = [];
 var $questions = null;
 
 var faqs_index = null;
+var first_hash = true;
 
 /*
  * Strip whitespace from strings.
@@ -27,7 +29,6 @@ if (!String.prototype.trim) {
  */
 var scroll_to = function($el) {
     var top = $el.offset().top;
-    console.log(top);
     $body.scrollTop(top);
 };
 
@@ -51,8 +52,9 @@ var toggle_answer = function() {
  * Jump back to the top of the page.
  */
 var back_to_top = function() {
-    $body.scrollTo($content, { duration:450 }, 'y');
-    return false;
+    scroll_to($content);
+
+    return true;
 };
 
 /*
@@ -154,6 +156,7 @@ var on_hash_changed = function(new_hash, old_hash) {
 
 $(function() {
     $body = $('body');
+    $content = $('#content');
     $search_form = $('#search');
     $search_query = $('#query');
     $search_results = $('#results');
@@ -172,6 +175,8 @@ $(function() {
     // Event handlers
     $search_query.on('keyup', on_search_query_keyup);
     $faqs_wrapper.on('click', '.question a', toggle_answer);
+
+    $faqs_wrapper.on('click', '.tags a', back_to_top)
 
     // Set up the hasher bits to grab the URL hash.
     hasher.changed.add(on_hash_changed);

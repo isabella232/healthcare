@@ -188,7 +188,7 @@ $(function() {
     setup_search();
 
     // Event handlers
-    $search_query.on('keyup', on_search_query_keyup);
+    $search_query.on('input', on_search_query_keyup);
     $faqs_wrapper.on('click', '.question a', toggle_answer);
 
     $faqs_wrapper.on('click', '.tags a', back_to_top)

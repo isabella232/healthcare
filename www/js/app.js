@@ -88,22 +88,37 @@ var search = function(query) {
     $search_results.hide();
     $all_answers.hide();
     $results_list.empty();
-    $faqs_wrapper.empty();
-
-    var results = faqs_index.search(query);
-
-    var delay = 0;
-
-    for (var i = 0; i < results.length; i++) {
-        var id = parseInt(results[i].ref);
-        var faq = FAQS[id];
-
-        //$results_list.append('<li><a href="#answer/' + id + '">' + faq.question + '</a></li>');
-        $faqs_wrapper.append($faqs.eq(id).clone().addClass('new-item'));
-    }  
 
     $search_term.text(query);
     $search_results.show();
+
+    $faqs_wrapper.css('height', $faqs_wrapper.height() + 'px');
+
+    $faqs_wrapper.find('.faq').removeClass('new-item').addClass('remove-item').delay(1000).queue(function(){
+        $faqs_wrapper.empty();
+
+        var results = faqs_index.search(query);
+
+        for (var i = 0; i < results.length; i++) {
+            var id = parseInt(results[i].ref);
+            var faq = FAQS[id];
+            var delay = (i + 1) * 250;
+
+            $faqs_wrapper.append($faqs.eq(id).clone().addClass('hide').delay(delay).queue(function(next){
+                $(this).removeClass('hide').addClass('new-item');
+                next();
+            }));
+
+
+            if (i == results.length - 1){
+                $faqs_wrapper.delay(delay).queue(function(next){
+                    $(this).css('height', 'auto');
+                    next();
+                });
+            }
+        }
+
+    });
 }
 
 /*

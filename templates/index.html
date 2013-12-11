@@ -1,24 +1,65 @@
 {% extends '_base.html' %}
 
 {% block content %}
-    <h1>{{ COPY.content.header_title }}</h1>
-
-    <p class="byline">By <span>{{ COPY.attribution.byline }}</span></p>
-    <p class="dateblock">
-        <span class="date">{{ COPY.attribution.pubdate }}</span>
-        <span class="time"> {{ COPY.attribution.pubtime }}</span>
-    </p>
-
-    <h2>What do you want to know?</h2>
-
-    <form id="search">
-        <div class="form-group">
-            <label for="query" class="sr-only"> Search:</label>
-            <input class="form-control input-lg" placeholder="Search" type="text" id="query" />
+    
+    <div class="header-wrapper">
+        <div class="header-meta">
+            <h1>{{ COPY.content.header_title }}</h1>
+            <p class="byline">By <span>{{ COPY.attribution.byline }}</span></p>
+            <p class="dateblock">
+                <span class="date">{{ COPY.attribution.pubdate }}</span>
+                <span class="time"> {{ COPY.attribution.pubtime }}</span>
+            </p>
         </div>
-        <p>e.g. <a href="#search/medicare">medicare</a>, <a href="#search/seniors">seniors</a>, <a href="#search/healthcare.gov">healthcare.gov</a></p>
-    </form>
+        <div id="bigbox">
+            {# 300x250 ad #}
+            <div class="adwrapper">
+                <div class="sponsor300">
+                    <script type="text/javascript">
+                    <!--
+                    if (DFP.shouldRenderForDevice('desktop')) {
+                        googletag.cmd.push(function() { googletag.display('ad-desktop'); });
+                    }
+                    // -->
+                    </script>
+                </div>
+
+                <img src="http://placehold.it/300x250">
+                <p class="left">NPR thanks our sponsors</p>
+                <p class="right"><a href="http://www.npr.org/about/place/corpsupport/">Become an NPR sponsor</a></p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+
+{% block before_content %}
+<div class="search-container">
+    <div class="container">
+        <div class="search-wrapper">
+            <div class="top-searches">
+                <h2>Try these common questions</h2>
+
+            {% for tag in COPY.tags if tag.home_page_display == "yes" %}
+                {% if loop.index < 5 %}
+                <p><a href="#search/{{ tag.slug }}">{{ tag.display_name}}</a></p>
+                {% endif %}
+            {% endfor %}
+            </div>
+
+            <h3 class="divider"><strong>Or</strong></h3>
+
+            <form id="search">
+                <h2>Search</h2>
+                <div class="form-group">
+                    <label for="query" class="sr-only"> Search:</label>
+                    <input class="form-control input-lg" placeholder="Search" type="text" id="query" />
+                </div>
+                <p>e.g. <a href="#search/medicare">medicare</a>, <a href="#search/seniors">seniors</a>, <a href="#search/healthcare.gov">healthcare.gov</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock before_content %}
 
 
 {% block wide_content %}

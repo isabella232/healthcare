@@ -108,7 +108,7 @@ header {
 
             #bigbox {
                 display: block;
-                width: 300px;
+                width: 330px;
                 padding-left: @grid-gutter-width;
             }
         }
@@ -126,21 +126,9 @@ header {
 
 
     .search-wrapper {
-
-        @media screen and (min-width: @screen-md){
-            display: table;
-            width: 100%;
-        }
-
-
         .top-searches,
         #search,
-        .divider {
-
-            @media screen and (min-width: @screen-md){
-                display: table-cell;
-            }
-           
+        .divider {   
 
             h2 {
                 margin-top: 0;
@@ -159,13 +147,34 @@ header {
 
             strong {
                 display: block;
-                margin: 0 auto;
+                margin: @line-height-computed auto;
+                font-size: @font-size-large;
 
                 .img-circle;
                 .square(80px);
                 line-height: 80px;
-                background: #FF6157;
+                background: #3F474F; //#FF6157;
                 color: #fff;
+            }
+        }
+
+        @media screen and (min-width: @screen-sm){
+            display: table;
+            width: 100%;
+
+            .top-searches,
+            #search,
+            .divider {
+                display: table-cell;
+            }
+
+            .top-searches,
+            #search {
+                width: 45%;
+            }
+
+            .divider {
+                width: 10%;
             }
         }
     }

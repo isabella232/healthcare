@@ -62,7 +62,8 @@ var back_to_top = function() {
  */
 var setup_search = function() {
     faqs_index = lunr(function () {
-        this.field('tags', { boost: 100 })
+        this.field('category', { boost: 100 })
+        this.field('category2', { boost: 100 })
         this.field('question', { boost: 10 })
         this.field('answer')
         this.ref('id')
@@ -74,7 +75,8 @@ var setup_search = function() {
 
         faqs_index.add({
             id: i,
-            tags: faq['tags'],
+            category: faq['category'],
+            category2: faq['category2'],
             question: faq['question'],
             answer: faq['answer']
         });
@@ -96,6 +98,7 @@ var search = function(query) {
 
     var results = faqs_index.search(query);
 
+    console.table(FAQS);
     for (var i = 0; i < results.length; i++) {
         var id = parseInt(results[i].ref);
         var faq = FAQS[id];

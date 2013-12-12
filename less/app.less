@@ -10,6 +10,10 @@ body {
 	background: #fff;
 }
 
+a:focus { 
+    outline: none; 
+}
+
 // Global typography 
 
 h1,h2,h3,h4,h5,h6 {
@@ -144,6 +148,7 @@ header {
             text-transform: uppercase;
             vertical-align: middle;
             padding: 0 50px;
+            position: relative;
 
             strong {
                 display: block;
@@ -155,6 +160,27 @@ header {
                 line-height: 80px;
                 background: #3F474F; //#FF6157;
                 color: #fff;
+                position: relative;
+                z-index: 10;
+
+                @media screen and (max-width: @screen-xs-max){
+                    box-sizing: content-box;
+                    border: 10px solid desaturate(#EBF5F4, 10%);
+                    margin: @line-height-computed / 2 auto;
+                }
+            }
+
+            @media screen and (max-width: @screen-xs-max){
+                &:after {
+                    position: absolute;
+                    display: block;
+                    content: ' ';
+                    width: 100%;
+                    border-top: 1px solid @gray-light;
+                    left: 0;
+                    top: 50%;
+                    z-index: 1;
+                }
             }
         }
 
@@ -262,7 +288,7 @@ header {
 			&:before {
 				content: ' ';
 				display: block;
-				border-top: 1px solid @gray-light;
+				border-top: 1px solid #CCC;
 				margin: 0 @grid-gutter-width / 2 @line-height-computed; 
 			}
 
@@ -289,13 +315,17 @@ header {
 						display: block;
 						.img-circle;
 						.square(32px);
-						border: 2px solid @text-color;
-						color: @text-color;
+						border: 2px solid #66A9BF;
+						color: #66A9BF;
 						text-align: center;
 						line-height: 28px;
 						position: absolute;
 						top: 0;
 						right: @grid-gutter-width / 2;
+
+                        &.open {
+                            line-height: 25px;
+                        }
 					}
 				}
 
@@ -308,29 +338,14 @@ header {
 				font-weight: 300;
 				overflow: hidden;
 				width: 100%;
+                max-height: auto;
 
 				a {
 					color: @link-color;
 				}
 
-				// .transition(all 0.5s ease-in-out);
-
-				// -webkit-transform-origin: top;
-				// 	-ms-transform-origin: top; // IE9+
-				// 		transform-origin: top;
-
-				// -webkit-transform: scaleY(1);
-				// 	-ms-transform: scaleY(1); // IE9+
-				// 		transform: scaleY(1);
-				max-height: 100%;
-
 				&.closed {
-					// -webkit-transform: scaleY(0);
-					// 	-ms-transform: scaleY(0); // IE9+
-					// 		transform: scaleY(0);
 					max-height: 0;
-					width: 100%;
-					// opacity: 0;
 				}
 			}
 

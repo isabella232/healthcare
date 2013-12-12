@@ -35,10 +35,10 @@ var scroll_to = function($el) {
 /*
  * Scroll to a given element.
  */
-var toggle_answer = function() {
-    event.preventDefault();
+var toggle_answer = function(e) {
+    e.preventDefault();
     $(this).parent().next().toggleClass('closed');
-    $(this).find('span').text(function(){
+    $(this).find('span').toggleClass('open').text(function(){
         if ($(this).text() == '+'){
             return '–';
         } else {

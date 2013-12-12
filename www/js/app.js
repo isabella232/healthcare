@@ -2,6 +2,7 @@ var MOBILE = Modernizr.touch;
 
 var $body = null;
 var $content = null;
+var $search_container = null;
 var $search_form = null;
 var $search_query = null;
 var $search_results = null;
@@ -29,7 +30,10 @@ if (!String.prototype.trim) {
  */
 var scroll_to = function($el) {
     var top = $el.offset().top;
-    $body.scrollTop(top);
+    $body.animate({
+        scrollTop: top
+    }, 1000);
+    return false;
 };
 
 /*
@@ -87,6 +91,7 @@ var setup_search = function() {
  * Execute a search.
  */
 var search = function(query) {
+    console.log(query);
     $search_results.hide();
     $all_answers.hide();
     $results_list.empty();
@@ -145,6 +150,7 @@ var on_hash_changed = function(new_hash, old_hash) {
     if (hash_type == 'search') {
         $search_query.val(hash_args);
         throttled_search(hash_args);
+        scroll_to($search_container);
     } else if (hash_type == 'answer') {
         var $faq = $('#faq-' + hash_args);
         scroll_to($faq);
@@ -159,6 +165,7 @@ var on_hash_changed = function(new_hash, old_hash) {
 $(function() {
     $body = $('body');
     $content = $('#content');
+    $search_container = $('.search-container');
     $search_form = $('#search');
     $search_query = $('#query');
     $search_results = $('#results');

@@ -95,6 +95,7 @@ header {
 	}
 
     .header-wrapper {
+        text-align: center;
 
         #bigbox {
             display: none;
@@ -103,6 +104,7 @@ header {
         @media screen and (min-width: @screen-md){
             display: table;
             width: 100%;
+            text-align: left;
 
             .header-meta,
             #bigbox {
@@ -257,6 +259,60 @@ header {
 	padding-top: 20px;
 	color: #000;
 
+    .content-wrapper {
+        .make-sm-column(10);
+        .make-sm-column-offset(1);
+        .make-md-column(9);
+        // .make-md-column-push(3);
+        .make-md-column-offset(0);
+        .make-lg-column(10);
+        // .make-lg-column-push(2);
+
+
+
+        // .make-lg-column(8);
+        // .make-lg-column-offset(2);
+    }
+
+    .all-tags {
+        .make-sm-column(10);
+        .make-sm-column-offset(1);
+        .make-md-column(3);
+        // .make-md-column-pull(9);
+        .make-md-column-offset(0);
+        .make-lg-column(2);
+        // .make-lg-column-pull(10);
+
+        @media screen and (max-width: @screen-sm-max){
+            &:before {
+                border-top: 1px solid #ccc;
+                display: block;
+                content: ' ';
+                padding-top: @line-height-computed;
+            }
+        }
+
+
+        li {
+            padding-bottom: 5px;
+            display: inline-block;
+
+            a {
+                color: #fff;
+                display: inline-block;
+                background: @link-color;
+                font-weight: 300;
+                font-size: 14px;
+                padding: 5px;
+                text-transform: uppercase;
+            }
+
+            @media screen and (min-width: @screen-md){
+                display: block;
+            }
+        }
+    }
+
 	h2 {
 		font-weight: 700;
 		text-transform: uppercase;
@@ -355,15 +411,15 @@ header {
 			}
 
 			.answer {
-				.make-sm-column(7);
-				.make-md-column(7);
+				.make-sm-column(12);
+				.make-md-column(8);
 				.make-lg-column(8);
 				padding-bottom: @line-height-computed;
 			}
 
 			.tags {
-				.make-sm-column(5);
-				.make-md-column(5);
+				.make-sm-column(12);
+				.make-md-column(4);
 				.make-lg-column(4);
 
 				h4 {

@@ -189,6 +189,7 @@ $(function() {
     setup_search();
 
     // Event handlers
+    FastClick.attach(document.body);
     $search_query.on('input', on_search_query_keyup);
     $search_query.keypress(function (e) {
       if (e.which == 13) {

@@ -210,7 +210,7 @@ $(function() {
       
       timer = setTimeout(function(){
         $body.removeClass('disable-hover');
-      },500);
+      },250);
     }, false);
 
     // Set up the hasher bits to grab the URL hash.

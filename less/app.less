@@ -340,9 +340,10 @@ header {
 						top: 0;
 						right: @grid-gutter-width / 2;
 
-                        &.open {
-                            line-height: 25px;
+                        &:after {
+                            content: '+';
                         }
+
 					}
 				}
 
@@ -364,14 +365,10 @@ header {
 				font-weight: 300;
 				overflow: hidden;
 				width: 100%;
-                max-height: auto;
+                max-height: 0;
 
 				a {
 					color: @link-color;
-				}
-
-				&.closed {
-					max-height: 0;
 				}
 
                 blockquote {
@@ -386,6 +383,20 @@ header {
                     }
                 }
 			}
+
+            &.open {
+                .answer-wrapper {
+                    max-height: none;
+                }
+
+                .question a span {
+                    line-height: 25px;
+
+                    &:after {
+                        content: '-';
+                    }
+                }
+            }
 
 			.answer,
 			.tags {
@@ -413,6 +424,18 @@ header {
 
                 a {
                     color: #fff;
+                }
+
+                .sharing {
+                    a {
+                        display: inline-block;
+                        .img-circle;
+                        .square(32px);
+                        line-height: 32px;
+                        background: #66A9BF;
+                        text-align: center;
+                        margin-right: 5px;
+                    }
                 }
 			}
 		}

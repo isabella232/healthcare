@@ -42,15 +42,7 @@ var scroll_to = function($el) {
  */
 var toggle_answer = function(e) {
     e.preventDefault();
-    $(this).parent().find('.answer-wrapper').toggleClass('closed');
-    $(this).find('span').toggleClass('open').text(function(){
-        if ($(this).text() == '+'){
-            return '-';
-        } else {
-            return '+';
-        }
-    });
-        
+    $(this).parent().toggleClass('open');   
 };
 
 /*
@@ -106,7 +98,6 @@ var search = function(query) {
     for (var i = 0; i < results.length; i++) {
         var id = parseInt(results[i].ref);
         var faq = FAQS[id];
-        var delay = 0; //(i + 1) * 250;
 
         $faqs_wrapper.append($faqs.eq(id).clone());
     }
@@ -151,6 +142,7 @@ var on_hash_changed = function(new_hash, old_hash) {
         throttled_search(hash_args);
     } else if (hash_type == 'answer') {
         var $faq = $('#faq-' + hash_args);
+        $faq.addClass('open');
         scroll_to($faq);
     }
 

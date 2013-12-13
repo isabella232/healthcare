@@ -82,8 +82,8 @@
     <div id="faqs">
     {% for faq in faqs %}
         <div id="faq-{{ loop.index0 }}" class="faq">
-            <h3 class="question"><a href="#">{{ faq.question|safe }}&nbsp;<span>+</span></a></h3>
-            <div class="answer-wrapper closed">
+            <h3 class="question"><a href="#">{{ faq.question|safe }}&nbsp;<span></span></a></h3>
+            <div class="answer-wrapper">
                 <div class="answer">{{ faq.answer|safe }}</div>
                 {% if faq.tags.strip() %}
                 <div class="tags">
@@ -93,6 +93,9 @@
                         <li><a href="#search/{{ tag.strip().lower() }}">{{ tag.strip() }}</a></li>
                         {% endfor %}
                     </ul>
+
+                    <h4>Share this answer</h4>
+                    <p class="sharing"><a href="https://twitter.com/share?text={{ faq.question|safe|urlencode }}&url={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}" target="_blank"><i class="icon-twitter"></i></a><a href="https://www.facebook.com/sharer/sharer.php?u={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}"><i class="icon-facebook"></i></a></p>
                 </div>
                 {% endif %}
             </div>

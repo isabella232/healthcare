@@ -31,10 +31,9 @@ if (!String.prototype.trim) {
  */
 var scroll_to = function($el) {
     var top = $el.offset().top;
-    $body.animate({
+    $('html,body').animate({
         scrollTop: top
     }, 1000);
-    return false;
 };
 
 /*

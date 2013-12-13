@@ -97,14 +97,6 @@
     </div>
 </div>
 
-<div class="all-tags">
-    <h2>All Topics</h2>
-    <ul class="tag-list list-unstyled">
-        {% for tag in COPY.tags %}
-            <li><a href="#search/{{ tag.slug|replace(" ", "%20") }}">{{ tag.name}}</a></li>
-        {% endfor %}
-    </ul>
-</div>
 {% endblock %}
 
 {% block extra_foot %}

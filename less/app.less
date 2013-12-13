@@ -264,28 +264,6 @@ header {
     .content-wrapper {
         .make-sm-column(10);
         .make-sm-column-offset(1);
-        .make-md-column(9);
-        .make-md-column-offset(0);
-        .make-lg-column(10);
-    }
-
-    .all-tags {
-        .make-sm-column(10);
-        .make-sm-column-offset(1);
-        .make-md-column(3);
-        // .make-md-column-pull(9);
-        .make-md-column-offset(0);
-        .make-lg-column(2);
-        // .make-lg-column-pull(10);
-
-        @media screen and (max-width: @screen-sm-max){
-            &:before {
-                border-top: 1px solid #ccc;
-                display: block;
-                content: ' ';
-                padding-top: @line-height-computed;
-            }
-        }
     }
 
 	h2 {

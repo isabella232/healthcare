@@ -20,11 +20,11 @@ var timer = null;
 /*
  * Strip whitespace from strings.
  */
-if (!String.prototype.trim) {  
-    String.prototype.trim = function () {  
-        return this.replace(/^\s+|\s+$/g,'');  
-    };  
-} 
+if (!String.prototype.trim) {
+    String.prototype.trim = function () {
+        return this.replace(/^\s+|\s+$/g,'');
+    };
+}
 
 /*
  * Scroll to a given element.
@@ -136,7 +136,7 @@ var on_search_query_keyup = function(e) {
     }
 
     return false;
-}
+};
 
 /*
  * Respond to url changes.
@@ -205,11 +205,11 @@ $(function() {
     window.addEventListener('scroll', function() {
       clearTimeout(timer);
       if(!$body.hasClass('disable-hover')) {
-        $body.addClass('disable-hover')
+        $body.addClass('disable-hover');
       }
       
       timer = setTimeout(function(){
-        $body.removeClass('disable-hover')
+        $body.removeClass('disable-hover');
       },500);
     }, false);
 

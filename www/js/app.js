@@ -15,6 +15,7 @@ var $questions = null;
 
 var faqs_index = null;
 var first_hash = true;
+var timer = null;
 
 /*
  * Strip whitespace from strings.
@@ -201,9 +202,22 @@ $(function() {
     $faqs_wrapper.on('click', '.question', toggle_answer);
     $faqs_wrapper.on('click', '.tags a', on_form_submit);
     $search_container.on('click', 'a', on_form_submit);
+    window.addEventListener('scroll', function() {
+      clearTimeout(timer);
+      if(!$body.hasClass('disable-hover')) {
+        $body.addClass('disable-hover')
+      }
+      
+      timer = setTimeout(function(){
+        $body.removeClass('disable-hover')
+      },500);
+    }, false);
 
     // Set up the hasher bits to grab the URL hash.
     hasher.changed.add(on_hash_changed);
     hasher.initialized.add(on_hash_changed);
     hasher.init();
 });
+
+
+

@@ -35,27 +35,31 @@
 {% block before_content %}
 <div class="search-container">
     <div class="container">
-        <div class="search-wrapper">
-            <div class="top-searches">
-                <h2>Try these common questions</h2>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="search-wrapper">
+                    <div class="top-searches">
+                        <h2>Find Questions On Common Topics</h2>
 
-            {% for tag in COPY.tags if tag.home_page_display == "yes" %}
-                {% if loop.index < 5 %}
-                <p><a href="#search/{{ tag.slug }}">{{ tag.display_name}}</a></p>
-                {% endif %}
-            {% endfor %}
-            </div>
+                    {% for tag in COPY.tags if tag.home_page_display == "yes" %}
+                        {% if loop.index < 5 %}
+                        <p><a href="#search/{{ tag.slug }}">{{ tag.display_name}}</a></p>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
 
-            <h3 class="divider"><strong>Or</strong></h3>
+                    <h3 class="divider"><strong>Or</strong></h3>
 
-            <form id="search">
-                <h2>Search</h2>
-                <div class="form-group">
-                    <label for="query" class="sr-only"> Search:</label>
-                    <input class="form-control input-lg" placeholder="Search" type="text" id="query" />
+                    <form id="search">
+                        <h2>Search</h2>
+                        <div class="form-group">
+                            <label for="query" class="sr-only"> Search:</label>
+                            <input class="form-control input-lg" placeholder="Search" type="text" id="query" />
+                        </div>
+                        <p>e.g. <a href="#search/medicare">medicare</a>, <a href="#search/seniors">seniors</a>, <a href="#search/healthcare.gov">healthcare.gov</a></p>
+                    </form>
                 </div>
-                <p>e.g. <a href="#search/medicare">medicare</a>, <a href="#search/seniors">seniors</a>, <a href="#search/healthcare.gov">healthcare.gov</a></p>
-            </form>
+            </div>
         </div>
     </div>
 </div>

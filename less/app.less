@@ -317,6 +317,7 @@ header {
 				a {
                     display: block;
 					color: @text-color;
+                    text-decoration: none;
 
 					&:hover {
 						color: @link-color;
@@ -382,6 +383,13 @@ header {
                         color: @gray-light;
                     }
                 }
+
+                br {
+                    display: block;
+                    line-height: @line-height-computed;
+                    margin-bottom: @line-height-computed;
+                    content: ' ';
+                }
 			}
 
             &.open {
@@ -424,6 +432,7 @@ header {
 
                 a {
                     color: #fff;
+                    text-decoration: none;
                 }
 
                 .sharing {

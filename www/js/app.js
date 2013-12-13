@@ -41,7 +41,7 @@ var scroll_to = function($el) {
  */
 var toggle_answer = function(e) {
     e.preventDefault();
-    $(this).parent().next().toggleClass('closed');
+    $(this).parent().find('.answer-wrapper').toggleClass('closed');
     $(this).find('span').toggleClass('open').text(function(){
         if ($(this).text() == '+'){
             return '–';
@@ -150,7 +150,6 @@ var on_hash_changed = function(new_hash, old_hash) {
     if (hash_type == 'search') {
         $search_query.val(hash_args);
         throttled_search(hash_args);
-        scroll_to($search_container);
     } else if (hash_type == 'answer') {
         var $faq = $('#faq-' + hash_args);
         scroll_to($faq);
@@ -173,7 +172,7 @@ $(function() {
     $all_answers = $('#all-answers');
     $results_list = $('#results ul');
     $faqs_wrapper = $('#faqs');
-    $questions = $('.question a');
+    $questions = $('.question');
 
     // Make a copy of all FAQs on the page so we can easily
     // recreate them when we reorder them
@@ -183,7 +182,7 @@ $(function() {
 
     // Event handlers
     $search_query.on('input', on_search_query_keyup);
-    $faqs_wrapper.on('click', '.question a', toggle_answer);
+    $faqs_wrapper.on('click', '.question', toggle_answer);
 
     $faqs_wrapper.on('click', '.tags a', back_to_top)
 

@@ -198,8 +198,8 @@ $(function() {
     });
     $search_form.on('submit', on_form_submit);
     $faqs_wrapper.on('click', '.question', toggle_answer);
-
-    $faqs_wrapper.on('click', '.tags a', back_to_top)
+    $faqs_wrapper.on('click', '.tags a', on_form_submit);
+    $search_container.on('click', 'a', on_form_submit);
 
     // Set up the hasher bits to grab the URL hash.
     hasher.changed.add(on_hash_changed);

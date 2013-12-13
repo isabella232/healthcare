@@ -44,7 +44,7 @@ var toggle_answer = function(e) {
     $(this).parent().find('.answer-wrapper').toggleClass('closed');
     $(this).find('span').toggleClass('open').text(function(){
         if ($(this).text() == '+'){
-            return '–';
+            return '-';
         } else {
             return '+';
         }

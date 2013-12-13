@@ -84,7 +84,7 @@
                 {% if faq.tags.strip() %}
                 <div class="tags">
                     <h4>Related answers</h4>
-                    <ul class="list-unstyled">
+                    <ul class="tag-list list-unstyled">
                         {% for tag in faq.tags.split(',') %}
                         <li><a href="#search/{{ tag.strip().lower() }}">{{ tag.strip() }}</a></li>
                         {% endfor %}
@@ -99,7 +99,7 @@
 
 <div class="all-tags">
     <h2>All Topics</h2>
-    <ul class="list-unstyled">
+    <ul class="tag-list list-unstyled">
         {% for tag in COPY.tags %}
             <li><a href="#search/{{ tag.slug|replace(" ", "%20") }}">{{ tag.name}}</a></li>
         {% endfor %}

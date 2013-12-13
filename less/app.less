@@ -141,6 +141,7 @@ header {
                 text-transform: uppercase;
                 font-size: @font-size-large;
                 font-weight: 700;
+                letter-spacing: 0.05em;
             }
 
             text-align: center;
@@ -263,15 +264,8 @@ header {
         .make-sm-column(10);
         .make-sm-column-offset(1);
         .make-md-column(9);
-        // .make-md-column-push(3);
         .make-md-column-offset(0);
         .make-lg-column(10);
-        // .make-lg-column-push(2);
-
-
-
-        // .make-lg-column(8);
-        // .make-lg-column-offset(2);
     }
 
     .all-tags {
@@ -291,32 +285,13 @@ header {
                 padding-top: @line-height-computed;
             }
         }
-
-
-        li {
-            padding-bottom: 5px;
-            display: inline-block;
-
-            a {
-                color: #fff;
-                display: inline-block;
-                background: @link-color;
-                font-weight: 300;
-                font-size: 14px;
-                padding: 5px;
-                text-transform: uppercase;
-            }
-
-            @media screen and (min-width: @screen-md){
-                display: block;
-            }
-        }
     }
 
 	h2 {
 		font-weight: 700;
 		text-transform: uppercase;
         font-size: @font-size-large;
+        letter-spacing: 0.05em;
 	}
 
 	#results {
@@ -403,6 +378,18 @@ header {
 				&.closed {
 					max-height: 0;
 				}
+
+                blockquote {
+                    padding-top: 0;
+                    padding-bottom: 0; 
+                    border-left-width: 3px;
+
+                    p {
+                        font-size: @font-size-base;
+                        line-height: @line-height-base;
+                        color: @gray-light;
+                    }
+                }
 			}
 
 			.answer,
@@ -426,10 +413,42 @@ header {
 					text-transform: uppercase;
 					font-weight: 700;
 					font-size: @font-size-base;
+                    letter-spacing: 0.05em;
 				}
+
+                a {
+                    color: #fff;
+                }
 			}
 		}
 	}
+
+    .tag-list {
+        li {
+            padding-bottom: 5px;
+            display: inline-block;
+
+            a {
+                color: #fff;
+                display: inline-block;
+                background: #66A9BF;
+                font-weight: 300;
+                font-size: 12px;
+                letter-spacing: 0.05em;
+                padding: 5px;
+                text-transform: uppercase;
+
+                &:hover {
+                    text-decoration: none;
+                    background: @link-color;
+                }
+            }
+
+            @media screen and (min-width: @screen-md){
+                display: block;
+            }
+        }
+    }
 }
 
 // Footer

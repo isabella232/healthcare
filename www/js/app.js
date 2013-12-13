@@ -159,6 +159,16 @@ var on_hash_changed = function(new_hash, old_hash) {
     return false;
 };
 
+/*
+ * Handle form submit
+ */
+var on_form_submit = function() {
+    $search_query.blur();
+    scroll_to($content);
+};
+
+
+
 $(function() {
     $body = $('body');
     $content = $('#content');
@@ -183,10 +193,10 @@ $(function() {
     $search_query.keypress(function (e) {
       if (e.which == 13) {
         e.preventDefault();
-        scroll_to($content);
+        on_form_submit();
       }
     });
-    $search_form.on('submit', scroll_to($content));
+    $search_form.on('submit', on_form_submit);
     $faqs_wrapper.on('click', '.question', toggle_answer);
 
     $faqs_wrapper.on('click', '.tags a', back_to_top)

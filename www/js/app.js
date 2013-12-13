@@ -91,7 +91,6 @@ var setup_search = function() {
  * Execute a search.
  */
 var search = function(query) {
-    console.log(query);
     $search_results.hide();
     $all_answers.hide();
     $results_list.empty();
@@ -103,7 +102,6 @@ var search = function(query) {
 
     var results = faqs_index.search(query);
 
-    console.table(FAQS);
     for (var i = 0; i < results.length; i++) {
         var id = parseInt(results[i].ref);
         var faq = FAQS[id];
@@ -182,6 +180,13 @@ $(function() {
 
     // Event handlers
     $search_query.on('input', on_search_query_keyup);
+    $search_query.keypress(function (e) {
+      if (e.which == 13) {
+        e.preventDefault();
+        scroll_to($content);
+      }
+    });
+    $search_form.on('submit', scroll_to($content));
     $faqs_wrapper.on('click', '.question', toggle_answer);
 
     $faqs_wrapper.on('click', '.tags a', back_to_top)

@@ -95,7 +95,7 @@
                     </ul>
 
                     <h4>Share this answer</h4>
-                    <p class="sharing"><a href="https://twitter.com/share?text={{ faq.question|safe|urlencode }}&url={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}" target="_blank"><i class="icon-twitter"></i></a><a href="https://www.facebook.com/sharer/sharer.php?u={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}"><i class="icon-facebook"></i></a></p>
+                    <p class="sharing"><a href="https://twitter.com/share?text={{ faq.question|safe|urlencode }}&url={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}" target="_blank"><i class="icon-twitter"></i></a><a href="https://www.facebook.com/sharer/sharer.php?u={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}"><i class="icon-facebook"></i></a><a href="mailto:?subject=Answer from Affordable Care Act FAQ&body={{ faq.question|safe }}%0D%0A{{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}"><i class="icon-envelope-alt"></i></a></p>
                 </div>
                 {% endif %}
             </div>

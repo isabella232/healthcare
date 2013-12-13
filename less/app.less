@@ -271,6 +271,7 @@ header {
 		text-transform: uppercase;
         font-size: @font-size-large;
         letter-spacing: 0.05em;
+        margin-bottom: @line-height-computed;
 	}
 
 	#results {
@@ -342,6 +343,15 @@ header {
 
 				@media screen and (max-width: @screen-xs-max){
 					font-size: 24px;
+                    padding-right: 0;
+                    padding-bottom: 32px + @line-height-computed / 2;
+
+                    a span {
+                        top: auto;
+                        bottom: 0;
+                        right: 50%;
+                        margin-right: -16px;
+                    }
 				}
 			}
 

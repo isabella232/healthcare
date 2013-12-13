@@ -8,11 +8,15 @@ import csv
 import envoy
 from flask import Flask, Markup, abort, render_template
 
+import typogrify
+from typogrify.templatetags import jinja_filters
+
 import app_config
 import copytext
 from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
+jinja_filters.register(app.jinja_env)
 
 @app.route('/')
 def index():

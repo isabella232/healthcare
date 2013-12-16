@@ -14,11 +14,11 @@ import os
 NAMES
 """
 # Project name used for display
-PROJECT_NAME = 'healthcare'
+PROJECT_NAME = 'Your Questions About The Affordable Care Act'
 
 # Project name in urls
 # Use dashes, not underscores!
-PROJECT_SLUG = 'healthcare'
+PROJECT_SLUG = 'affordable-care-act-questions'
 
 # The name of the repository containing the source
 REPOSITORY_NAME = 'healthcare'
@@ -87,14 +87,14 @@ COPY_GOOGLE_SPREADSHEET_KEY = '0AjlIKRG8DtTqdHZja0cyS0R4Q2YtQnU5RUpOTzZfZGc'
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'An interactive FAQ on Obamacare.'
+PROJECT_DESCRIPTION = 'Find answers to your questions about The Affordable Care Act.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 TWITTER = {
-    'TEXT': PROJECT_NAME,
-    'URL': SHARE_URL,
+    'TEXT': '%s %s @NPRHealth' % (PROJECT_DESCRIPTION, SHARE_URL),
+    'URL': '',
     # Will be resized to 120x120, can't be larger than 1MB 
-    'IMAGE_URL': ''
+    # 'IMAGE_URL': ''
 }
 
 FACEBOOK = {
@@ -102,14 +102,14 @@ FACEBOOK = {
     'URL': SHARE_URL,
     'DESCRIPTION': PROJECT_DESCRIPTION,
     # Should be square. No documented restrictions on size
-    'IMAGE_URL': TWITTER['IMAGE_URL'],
+    # 'IMAGE_URL': TWITTER['IMAGE_URL'],
     'APP_ID': '138837436154588'
 }
 
 GOOGLE = {
     # Thumbnail image for Google News / Search.
     # No documented restrictions on resolution or size
-    'IMAGE_URL': TWITTER['IMAGE_URL']
+    # 'IMAGE_URL': TWITTER['IMAGE_URL']
 }
 
 NPR_DFP = {

@@ -431,8 +431,20 @@ header {
 				}
 
                 a {
-                    color: #fff;
                     text-decoration: none;
+                    color: #66A9BF;
+                    &:hover {
+                        color: @link-color;
+                    }
+                }
+
+                ul {
+                    padding-left: 17px;
+                    font-size: @font-size-small;
+
+                    li {
+                        margin-bottom: 5px;
+                    }
                 }
 
                 .sharing {
@@ -444,6 +456,7 @@ header {
                         background: #66A9BF;
                         text-align: center;
                         margin-right: 5px;
+                        color: #fff;
 
                         &:hover,
                         &:active {

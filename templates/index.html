@@ -5,11 +5,12 @@
     <div class="header-wrapper">
         <div class="header-meta">
             <h1>{{ COPY.content.header_title }}</h1>
-            <p>{{ COPY.content.chatter }}</p>
             <p class="byline">By <span>{{ COPY.attribution.byline }}</span></p>
             <p class="dateblock">
                 <span class="date">{{ COPY.attribution.pubdate }}</span>
             </p>
+            <p>{{ COPY.content.chatter }}</p>
+
         </div>
         <div id="bigbox">
             {# 300x250 ad #}
@@ -52,7 +53,7 @@
                     <h3 class="divider"><strong>Or</strong></h3>
 
                     <form id="search">
-                        <h2>Search</h2>
+                        <h2>Search for topics</h2>
                         <div class="form-group">
                             <label for="query" class="sr-only"> Search:</label>
                             <input class="form-control input-lg" placeholder="Search" type="text" id="query" />

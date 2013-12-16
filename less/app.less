@@ -88,13 +88,26 @@ header {
 	}
 
 	p {
-		font-size: 14px; 
+		font-size: @font-size-small; 
 		font-weight: 300;
 		color: @gray-light;
+
+        &.byline,
+        &.dateblock {
+            font-size: 13px;
+        }
 		
 		&.byline {
 			margin-bottom: 0;
-			a { text-transform: uppercase; }
+			a { 
+                text-transform: uppercase; 
+                color: @gray-light; 
+
+                &:hover {
+                    color: #66A9BF;
+                    text-decoration: none;
+                }
+            }
 		}
 		&.dateblock .date { margin-right: 0.8em; text-transform: uppercase; }
 	}

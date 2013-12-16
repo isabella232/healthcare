@@ -113,10 +113,10 @@ GOOGLE = {
 }
 
 NPR_DFP = {
-    'STORY_ID': '203618536',
-    'TARGET': 'News_NPR_News_Investigations',
-    'ENVIRONMENT': 'NPRTEST',
-    'TESTSERVER': 'true'
+    'STORY_ID': '1027',
+    'TARGET': 'News_Health_Health_Care',
+    'ENVIRONMENT': 'NPR',
+    'TESTSERVER': 'false'
 }
 
 """

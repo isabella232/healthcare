@@ -18,7 +18,7 @@ PROJECT_NAME = 'Your Questions About The Affordable Care Act'
 
 # Project name in urls
 # Use dashes, not underscores!
-PROJECT_SLUG = 'healthcare'
+PROJECT_SLUG = 'affordable-care-act-questions'
 
 # The name of the repository containing the source
 REPOSITORY_NAME = 'healthcare'

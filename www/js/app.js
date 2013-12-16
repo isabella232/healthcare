@@ -200,6 +200,8 @@ $(function() {
     $faqs_wrapper.on('click', '.tags a', on_form_submit);
     $tags.on('click', on_form_submit);
     $search_container.on('click', 'a', on_form_submit);
+    $search_query.on('change', scroll_to($search_container));
+
     window.addEventListener('scroll', function() {
       clearTimeout(timer);
       if(!$body.hasClass('disable-hover')) {

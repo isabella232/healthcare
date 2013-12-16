@@ -32,7 +32,6 @@ if (!String.prototype.trim) {
  * Scroll to a given element.
  */
 var scroll_to = function($el) {
-    console.log('scroll to invoked');
     var top = $el.offset().top;
     $('html,body').animate({
         scrollTop: top
@@ -126,7 +125,6 @@ var throttled_search = _.throttle(search, 250);
  */
 var to_ap_numeral = function(number) {
     var words = ['zero','one','two','three','four','five','six','seven','eight','nine'];
-    console.log(number);
     if (number < 10){
         return words[number];
     }

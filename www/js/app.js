@@ -100,6 +100,10 @@ var search = function(query) {
 
         $faqs_wrapper.append($faqs.eq(id).clone());
     }
+
+    if (results.length === 0){
+        $faqs_wrapper.html('<p class="no-results">Sorry, there were no results for those terms.</p>');
+    }
 };
 
 /*

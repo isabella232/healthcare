@@ -29,7 +29,13 @@ def index():
             context['faqs'].append(faq)
 
     context['faqs_js'] = json.dumps(context['faqs'])
-        
+
+    context['tag_display_names'] = {}
+    tags = context['COPY']['tags']
+
+    for tag in tags:
+        context['tag_display_names'][tag['name']] = tag['display_name']\
+
     return render_template('index.html', **context)
 
 @app.route('/widget.html')

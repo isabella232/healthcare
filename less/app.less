@@ -324,7 +324,7 @@ header {
 			.question {
 				.make-sm-column(12);
 				postion: relative;
-				line-height: 1.2;
+				line-height: 1.4;
 				padding-right: 32px + @grid-gutter-width;
 
 				a {
@@ -363,6 +363,7 @@ header {
 
 				@media screen and (max-width: @screen-xs-max){
 					font-size: 24px;
+                    line-height: 1.2;
                     padding-right: @grid-gutter-width / 2;
                     padding-bottom: 32px + @line-height-computed / 2;
 
@@ -488,6 +489,19 @@ header {
         }
 	}
 
+    .all-tags {
+        .make-sm-column(10);
+        .make-sm-column-offset(1);
+
+        &:before {
+            border-top: 1px solid #ccc;
+            display: block;
+            content: ' ';
+            padding-top: @line-height-computed;
+        }
+    }
+
+
     .tag-list {
         li {
             padding-bottom: 5px;
@@ -507,10 +521,6 @@ header {
                     text-decoration: none;
                     background: @link-color;
                 }
-            }
-
-            @media screen and (min-width: @screen-md){
-                display: block;
             }
         }
     }

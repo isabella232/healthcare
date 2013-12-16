@@ -12,6 +12,7 @@ var $results_list = null;
 var $faqs_wrapper = null;
 var $faqs = [];
 var $questions = null;
+var $tags = null;
 
 var faqs_index = null;
 var first_hash = true;
@@ -177,6 +178,7 @@ $(function() {
     $results_list = $('#results ul');
     $faqs_wrapper = $('#faqs');
     $questions = $('.question');
+    $tags = $('.all-tags a');
 
     // Make a copy of all FAQs on the page so we can easily
     // recreate them when we reorder them
@@ -196,6 +198,7 @@ $(function() {
     $search_form.on('submit', on_form_submit);
     $faqs_wrapper.on('click', '.question', toggle_answer);
     $faqs_wrapper.on('click', '.tags a', on_form_submit);
+    $tags.on('click', on_form_submit);
     $search_container.on('click', 'a', on_form_submit);
     window.addEventListener('scroll', function() {
       clearTimeout(timer);

@@ -149,7 +149,7 @@ var on_search_query_keyup = function(e) {
         $all_answers.show();
         $faqs_wrapper.html($faqs.clone());
         $search_results.hide();
-        $result_count.text('Showing ' + $faqs.length + ' questions');
+        $result_count.text('Showing ' + $faqs.length + ' results');
     }
 
     return false;

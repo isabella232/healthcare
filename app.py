@@ -8,7 +8,6 @@ import csv
 import envoy
 from flask import Flask, Markup, abort, render_template
 
-import typogrify
 from typogrify.templatetags import jinja_filters
 
 import app_config
@@ -30,11 +29,11 @@ def index():
 
     context['faqs_js'] = json.dumps(context['faqs'])
 
-    context['tag_display_names'] = {}
+    context['tags'] = {}
     tags = context['COPY']['tags']
 
     for tag in tags:
-        context['tag_display_names'][tag['name']] = tag['display_name']\
+        context['tags'][tag['name']] = tag
 
     return render_template('index.html', **context)
 

@@ -45,7 +45,7 @@
 
                     {% for tag in COPY.tags if tag.home_page_display == "yes" %}
                         {% if loop.index < 5 %}
-                        <p><a href="#search/{{ tag.slug }}">{{ tag.display_name}}</a></p>
+                        <p><a href="#search/{{ tag.search_for }}">{{ tag.display_name }}</a></p>
                         {% endif %}
                     {% endfor %}
                     </div>
@@ -87,19 +87,16 @@
             <h3 class="question"><a href="#">{{ faq.question|smartypants|safe }}&nbsp;<span></span></a></h3>
             <div class="answer-wrapper">
                 <div class="answer">{{ faq.answer|smartypants|safe }}</div>
-                {% if faq.tags.strip() %}
                 <div class="tags">
                     <h4>Related</h4>
                     <ul>
-                        {% for tag in faq.tags.split(',') %}
-                        <li><a href="#search/{{ tag.strip().lower() }}">{{ tag_display_names[tag.strip()] }}</a></li>
-                        {% endfor %}
+                        <li><a href="#search/{{ tags[faq.category.strip()].search_for }}">{{ tags[faq.category.strip()].display_name }}</a></li>
+                        <li><a href="#search/{{ tags[faq.category2.strip()].search_for }}">{{ tags[faq.category2.strip()].display_name }}</a></li>
                     </ul>
 
                     <h4>Share this answer</h4>
                     <p class="sharing"><a href="https://twitter.com/share?text={{ faq.question|safe|urlencode }}&url={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}" target="_blank"><i class="icon-twitter"></i></a><a href="https://www.facebook.com/sharer/sharer.php?u={{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}"><i class="icon-facebook"></i></a><a href="mailto:?subject=Answer from Affordable Care Act FAQ&body={{ faq.question|safe|urlencode }}%0D%0A{{ S3_BASE_URL|urlencode }}%23answer%2F{{ loop.index0 }}"><i class="icon-envelope-alt"></i></a></p>
                 </div>
-                {% endif %}
             </div>
         </div>
     {% endfor %}

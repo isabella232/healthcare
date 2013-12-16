@@ -87,7 +87,7 @@ COPY_GOOGLE_SPREADSHEET_KEY = '0AjlIKRG8DtTqdHZja0cyS0R4Q2YtQnU5RUpOTzZfZGc'
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'Find answers to your questions about The Affordable Care Act.'
+PROJECT_DESCRIPTION = 'NPR Health answers your questions about The Affordable Care Act.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 TWITTER = {

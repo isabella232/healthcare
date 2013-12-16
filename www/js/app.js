@@ -9,6 +9,7 @@ var $search_results = null;
 var $search_term = null;
 var $all_answers = null;
 var $results_list = null;
+var $result_count = null;
 var $faqs_wrapper = null;
 var $faqs = [];
 var $questions = null;
@@ -31,6 +32,7 @@ if (!String.prototype.trim) {
  * Scroll to a given element.
  */
 var scroll_to = function($el) {
+    console.log('scroll to invoked');
     var top = $el.offset().top;
     $('html,body').animate({
         scrollTop: top
@@ -92,8 +94,12 @@ var search = function(query) {
     $search_term.text(query);
     $search_results.show();
 
-
     var results = faqs_index.search(query);
+    var result_text = 'Showing ' + to_ap_numeral(results.length) + ' result';
+
+    if (results.length !== 1){
+        result_text += 's';
+    }
 
     for (var i = 0; i < results.length; i++) {
         var id = parseInt(results[i].ref);
@@ -101,6 +107,8 @@ var search = function(query) {
 
         $faqs_wrapper.append($faqs.eq(id).clone());
     }
+
+    $result_count.text(result_text);
 
     if (results.length === 0){
         $faqs_wrapper.html('<p class="no-results">Sorry, there were no results for those terms.</p>');
@@ -112,6 +120,19 @@ var search = function(query) {
  * while typing.
  */
 var throttled_search = _.throttle(search, 250);
+
+/*
+ * Make numbers conform to AP style
+ */
+var to_ap_numeral = function(number) {
+    var words = ['zero','one','two','three','four','five','six','seven','eight','nine'];
+    console.log(number);
+    if (number < 10){
+        return words[number];
+    }
+
+    return number;
+};
 
 /*
  * Execute throttled searches.
@@ -128,6 +149,7 @@ var on_search_query_keyup = function(e) {
         $all_answers.show();
         $faqs_wrapper.html($faqs.clone());
         $search_results.hide();
+        $result_count.text('Showing ' + $faqs.length + ' questions');
     }
 
     return false;
@@ -176,6 +198,7 @@ $(function() {
     $search_term = $('#term');
     $all_answers = $('#all-answers');
     $results_list = $('#results ul');
+    $result_count = $('.result-count');
     $faqs_wrapper = $('#faqs');
     $questions = $('.question');
     $tags = $('.all-tags a');
@@ -200,7 +223,6 @@ $(function() {
     $faqs_wrapper.on('click', '.tags a', on_form_submit);
     $tags.on('click', on_form_submit);
     $search_container.on('click', 'a', on_form_submit);
-    $search_query.on('change', scroll_to($search_container));
 
     window.addEventListener('scroll', function() {
       clearTimeout(timer);

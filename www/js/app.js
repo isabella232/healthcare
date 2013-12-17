@@ -2,6 +2,7 @@ var MOBILE = Modernizr.touch;
 
 var $body = null;
 var $content = null;
+var $clear_search = null;
 var $search_container = null;
 var $search_form = null;
 var $search_query = null;
@@ -184,11 +185,21 @@ var on_form_submit = function() {
     scroll_to($content);
 };
 
+/*
+ * Handle form submit
+ */
+var clear_search_terms = function(e) {
+    $search_query.val('');
+    on_search_query_keyup(e);
+    scroll_to($search_container);
+};
+
 
 
 $(function() {
     $body = $('body');
     $content = $('#content');
+    $clear_search = $('.clear-search');
     $search_container = $('.search-container');
     $search_form = $('#search');
     $search_query = $('#query');
@@ -221,6 +232,7 @@ $(function() {
     $faqs_wrapper.on('click', '.tags a', on_form_submit);
     $tags.on('click', on_form_submit);
     $search_container.on('click', 'a', on_form_submit);
+    $clear_search.on('click', clear_search_terms);
 
     window.addEventListener('scroll', function() {
       clearTimeout(timer);

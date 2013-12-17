@@ -5,11 +5,12 @@
     <div class="header-wrapper">
         <div class="header-meta">
             <h1>{{ COPY.content.header_title }}</h1>
+            <h3 class="visible-print">{{ S3_BASE_URL }}</h3>
             <p class="byline">By <span>{{ COPY.attribution.byline }}</span></p>
             <p class="dateblock">
                 <span class="date">{{ COPY.attribution.pubdate }}</span>
             </p>
-            <p>{{ COPY.content.chatter }}</p>
+            <p>{{ COPY.content.chatter|typogrify|safe }}</p>
 
         </div>
         <div id="bigbox">
@@ -87,7 +88,7 @@
     <div id="faqs">
     {% for faq in faqs %}
         <div id="faq-{{ loop.index0 }}" class="faq">
-            <h3 class="question"><a href="#">{{ faq.question|smartypants|safe }}&nbsp;<span></span></a></h3>
+            <h3 class="question"><a href="#">{{ faq.question|typogrify|safe }}&nbsp;<span class="toggle-answer"></span></a></h3>
             <div class="answer-wrapper">
                 <div class="answer">{{ faq.answer|smartypants|safe }}</div>
                 <div class="tags">

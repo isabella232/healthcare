@@ -73,11 +73,6 @@ $(document).ready(function () {
 			});
 		}, 500);
 	}
-
-    // No box ad when we have adhesion, so #main-content gets 12 columns
-    if (window.innerWidth <= 1024){
-        $('#main-content').removeClass('col-md-8').addClass('col-md-12');
-    }
 });
 
 var DFP = {};
@@ -198,7 +193,7 @@ DFP.shouldRenderForDevice = function(deviceEnv) {
                 var ieEightCheck = ($.browser.msie === true && ($.browser.version === '7.0' || $.browser.version === '8.0'));
                 if (ieEightCheck) {
                     shouldRender = true;
-                } else if (!NPR.Devices.isOnTablet() && winWidth > 1024) {
+                } else if (!NPR.Devices.isOnTablet() && winWidth >= 992) {
                     shouldRender = true;
                 }
                 

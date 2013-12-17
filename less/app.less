@@ -102,7 +102,21 @@ header {
     }
 
 	
-	h1 { font-size: 55px; font-weight: 700; font-family: @headings-font-family; color: #fff; margin-bottom: 11px; }
+	h1 { 
+        font-size: 55px; 
+        font-weight: 700; 
+        font-family: @headings-font-family; 
+        color: #fff; 
+        margin-bottom: @line-height-computed; 
+
+        @media screen and (min-width: @screen-md){
+            font-size: 48px;
+        }
+
+        @media screen and (min-width: @screen-lg){
+            font-size: 56px;
+        }
+    }
 	h2 {
 		margin-top: @line-height-computed;
 	}

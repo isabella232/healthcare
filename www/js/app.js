@@ -186,7 +186,7 @@ var on_form_submit = function() {
 };
 
 /*
- * Handle form submit
+ * Clear the search terms and scroll to search container
  */
 var clear_search_terms = function(e) {
     scroll_to($search_container);

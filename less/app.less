@@ -102,7 +102,21 @@ header {
     }
 
 	
-	h1 { font-size: 55px; font-weight: 700; font-family: @headings-font-family; color: #fff; margin-bottom: 11px; }
+	h1 { 
+        font-size: 55px; 
+        font-weight: 700; 
+        font-family: @headings-font-family; 
+        color: #fff; 
+        margin-bottom: @line-height-computed; 
+
+        @media screen and (min-width: @screen-md){
+            font-size: 48px;
+        }
+
+        @media screen and (min-width: @screen-lg){
+            font-size: 56px;
+        }
+    }
 	h2 {
 		margin-top: @line-height-computed;
 	}
@@ -312,6 +326,36 @@ header {
     .content-wrapper {
         .make-sm-column(10);
         .make-sm-column-offset(1);
+
+        .print {
+            display: block;
+            position: absolute;
+            top: -2px;
+            right: @grid-gutter-width / 2;
+            text-align: center;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            font-weight: 300;
+            background: #66A9BF;
+            color: #fff;
+            font-size: 14px;
+            .border-radius(3px);
+            cursor: pointer;
+
+            i {
+                margin-right: 5px;
+            }
+
+            &:hover {
+                background: @link-color;
+                text-decoration: none;
+            }
+
+            .NPRtablet &,
+            .NPRphone & {
+                display: none;
+            }
+        }
     }
 
 	h2 {
@@ -324,6 +368,8 @@ header {
         a {
             i {
                 color: @gray-light;
+                margin-left: 0.25em;
+                text-decoration: none;
             }
         }
 	}
@@ -410,7 +456,7 @@ header {
 						text-align: center;
 						line-height: 28px;
 						position: absolute;
-						top: 0;
+						top: 5px;
 						right: @grid-gutter-width / 2;
 
                         &:after {
@@ -532,6 +578,23 @@ header {
                             text-decoration: none;
                             background: @link-color;
                         }
+                    }
+                }
+
+                .NPRtablet &,
+                .NPRphone & {
+
+                    ul {
+                        font-size: @font-size-base;
+
+                        a {
+                            padding: 10px;
+                        }
+                    }
+
+                    .sharing a {
+                        .square(44px);
+                        line-height: 44px;
                     }
                 }
 			}
@@ -680,4 +743,67 @@ footer {
 		h1 { font-size: 36px; }
 	}
 	footer { border-top: 1px solid #CCC; margin-top: 24px; }
+}
+
+
+@media print {
+    .search-container,
+    .social-links,
+    .site-links-2,
+    footer,
+    .print,
+    .site-links li {
+        display: none;
+
+        &.npr {
+            display: block;
+        }
+    }
+
+    header {
+        .header-wrapper {
+            .make-md-column(11);
+        }
+    }
+
+    #content {
+        .clear-search {
+            i {
+                display: none;
+            }
+        }
+
+        #faqs {
+            .faq {
+
+                .question {
+                    a {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+
+                .answer-wrapper {
+                    max-height: 100%;
+
+                    .answer {
+                        width: 100%;
+
+                        blockquote {
+                            border-width: 0 0 0 3px;
+                        }
+                    }
+
+                    .tags {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .all-tags {
+            display: none;
+        }
+    }
 }

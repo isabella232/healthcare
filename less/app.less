@@ -124,15 +124,16 @@ header {
 	p {
 		font-size: @font-size-small; 
 		font-weight: 300;
-		color: @gray-light;
+		color: lighten(@gray-light, 15%);
 
         &.byline,
         &.dateblock {
-            font-size: 13px;
+            font-size: 12px;
+            color: @gray-light;
         }
 		
 		&.byline {
-			margin-bottom: 0;
+			margin-bottom: @line-height-computed / 4;
 			a { 
                 text-transform: uppercase; 
                 color: @gray-light; 

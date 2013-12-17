@@ -231,7 +231,7 @@ $(function() {
     });
     $search_form.on('submit', on_form_submit);
     $faqs_wrapper.on('click', '.question', toggle_answer);
-    $faqs_wrapper.on('click', '.tags a', on_form_submit);
+    $faqs_wrapper.on('click', '.tag-list a', on_form_submit);
     $tags.on('click', on_form_submit);
     $search_container.on('click', 'a', on_form_submit);
     $clear_search.on('click', clear_search_terms);

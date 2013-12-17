@@ -326,6 +326,28 @@ header {
     .content-wrapper {
         .make-sm-column(10);
         .make-sm-column-offset(1);
+
+        .print {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: @grid-gutter-width / 2;
+            .img-circle;
+            .square(32px);
+            line-height: 32px;
+            text-align: center;
+            background: #66A9BF;
+            color: #fff;
+
+            &:hover {
+                background: @link-color;
+            }
+
+            .NPRtablet &,
+            .NPRphone & {
+                display: none;
+            }
+        }
     }
 
 	h2 {
@@ -719,6 +741,7 @@ footer {
     .social-links,
     .site-links-2,
     footer,
+    .print,
     .site-links li {
         display: none;
 

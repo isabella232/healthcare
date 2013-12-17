@@ -13,6 +13,7 @@ var $results_list = null;
 var $result_count = null;
 var $faqs_wrapper = null;
 var $faqs = [];
+var $print = null;
 var $questions = null;
 var $tags = null;
 
@@ -196,6 +197,13 @@ var clear_search_terms = function(e) {
 
 };
 
+/*
+ * Let's kill some trees.
+ */
+var print_page = function() {
+    window.print();
+};
+
 
 
 $(function() {
@@ -213,6 +221,7 @@ $(function() {
     $faqs_wrapper = $('#faqs');
     $questions = $('.question');
     $tags = $('.all-tags a');
+    $print = $('.print');
 
     // Make a copy of all FAQs on the page so we can easily
     // recreate them when we reorder them
@@ -235,6 +244,7 @@ $(function() {
     $tags.on('click', on_form_submit);
     $search_container.on('click', 'a', on_form_submit);
     $clear_search.on('click', clear_search_terms);
+    $print.on('click', print_page);
 
     window.addEventListener('scroll', function() {
       clearTimeout(timer);

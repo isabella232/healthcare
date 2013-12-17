@@ -751,7 +751,7 @@ footer {
     .social-links,
     .site-links-2,
     footer,
-    .print,
+    #content .content-wrapper .print,
     .site-links li {
         display: none;
 
@@ -761,12 +761,19 @@ footer {
     }
 
     header {
-        .header-wrapper {
-            .make-md-column(11);
+        .header-container {
+            .make-sm-column(10);
+            .make-sm-column-offset(1);
+
+            .header-wrapper {
+                text-align: left;
+            }
         }
     }
 
     #content {
+        font-size: 90%;
+
         .clear-search {
             i {
                 display: none;
@@ -775,9 +782,15 @@ footer {
 
         #faqs {
             .faq {
+                &:before {
+                    margin: 0;
+                    border: none;
+                }
 
                 .question {
                     a {
+                        font-size: 24px;
+                        font-weight: bold;
                         span {
                             display: none;
                         }

@@ -189,9 +189,11 @@ var on_form_submit = function() {
  * Handle form submit
  */
 var clear_search_terms = function(e) {
+    scroll_to($search_container);
     $search_query.val('');
     on_search_query_keyup(e);
-    scroll_to($search_container);
+    hasher.setHash('');
+
 };
 
 

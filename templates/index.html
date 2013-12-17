@@ -88,7 +88,7 @@
     <div id="faqs">
     {% for faq in faqs %}
         <div id="faq-{{ loop.index0 }}" class="faq">
-            <h3 class="question"><a href="#">{{ faq.question|typogrify|safe }}&nbsp;<span class="toggle-answer"></span></a></h3>
+            <h3 class="question"><a href="#">{{ faq.question|smartypants|safe }}&nbsp;<span class="toggle-answer"></span></a></h3>
             <div class="answer-wrapper">
                 <div class="answer">{{ faq.answer|smartypants|safe }}</div>
                 <div class="tags">

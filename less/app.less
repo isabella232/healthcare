@@ -328,6 +328,29 @@ header {
         }
 	}
 
+    .tag-list {
+        li {
+            padding-bottom: 5px;
+            display: inline-block;
+
+            a {
+                color: #fff;
+                display: inline-block;
+                background: #66A9BF;
+                font-weight: 300;
+                font-size: 12px;
+                letter-spacing: 0.05em;
+                padding: 5px;
+                text-transform: uppercase;
+
+                &:hover {
+                    text-decoration: none;
+                    background: @link-color;
+                }
+            }
+        }
+    }
+
 	#results {
 		display: none;
 
@@ -482,14 +505,10 @@ header {
 
                 a {
                     text-decoration: none;
-                    color: #66A9BF;
-                    &:hover {
-                        color: @link-color;
-                    }
+                    color: #fff;
                 }
 
                 ul {
-                    padding-left: 17px;
                     font-size: @font-size-small;
 
                     li {
@@ -535,27 +554,25 @@ header {
             content: ' ';
             padding-top: @line-height-computed;
         }
-    }
 
+        .tag-list {
+            li {
+                padding-bottom: 7px;
+                margin-right: 3px;
 
-    .tag-list {
-        li {
-            padding-bottom: 5px;
-            display: inline-block;
+                a {
+                    font-size: @font-size-small;
+                    padding: 7px;
+                }
 
-            a {
-                color: #fff;
-                display: inline-block;
-                background: #66A9BF;
-                font-weight: 300;
-                font-size: 12px;
-                letter-spacing: 0.05em;
-                padding: 5px;
-                text-transform: uppercase;
+                @media screen and (max-width: @screen-xs-max){
+                    padding-bottom: 5px;
+                    margin-right: 0;
 
-                &:hover {
-                    text-decoration: none;
-                    background: @link-color;
+                    a {
+                        font-size: 12px;
+                        padding: 5px;
+                    }
                 }
             }
         }

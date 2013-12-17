@@ -90,9 +90,9 @@
                 <div class="answer">{{ faq.answer|smartypants|safe }}</div>
                 <div class="tags">
                     <h4>Related</h4>
-                    <ul>
-                        <li><a href="#search/{{ tags[faq.category.strip()].search_for }}">{{ tags[faq.category.strip()].display_name }}</a></li>
-                        <li><a href="#search/{{ tags[faq.category2.strip()].search_for }}">{{ tags[faq.category2.strip()].display_name }}</a></li>
+                    <ul class="tag-list list-unstyled">
+                        <li><a href="#search/{{ tags[faq.category.strip()].search_for }}">{{ tags[faq.category.strip()].name }}</a></li>
+                        <li><a href="#search/{{ tags[faq.category2.strip()].search_for }}">{{ tags[faq.category2.strip()].name }}</a></li>
                     </ul>
 
                     <h4>Share this answer</h4>

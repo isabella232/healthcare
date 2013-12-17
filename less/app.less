@@ -432,12 +432,12 @@ header {
                 font-size: 24px;
 				line-height: 1.4;
 				padding-right: 32px + @grid-gutter-width * 2;
+                font-weight: 300;
 
 				a {
                     display: block;
 					color: @text-color;
                     text-decoration: none;
-                    font-weight: 700;
 
 					&:hover {
 						color: @link-color;
@@ -483,6 +483,14 @@ header {
                     }
 				}
 			}
+
+            &.open {
+                .question {
+                    a {
+                        font-weight: bold;
+                    }
+                }
+            }
 
 			.answer-wrapper {
 				font-weight: 300;

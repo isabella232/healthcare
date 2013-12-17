@@ -712,3 +712,65 @@ footer {
 	}
 	footer { border-top: 1px solid #CCC; margin-top: 24px; }
 }
+
+
+@media print {
+    .search-container,
+    .social-links,
+    .site-links-2,
+    footer,
+    .site-links li {
+        display: none;
+
+        &.npr {
+            display: block;
+        }
+    }
+
+    header {
+        .header-wrapper {
+            .make-md-column(11);
+        }
+    }
+
+    #content {
+        .clear-search {
+            i {
+                display: none;
+            }
+        }
+
+        #faqs {
+            .faq {
+
+                .question {
+                    a {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+
+                .answer-wrapper {
+                    max-height: 100%;
+
+                    .answer {
+                        width: 100%;
+
+                        blockquote {
+                            border-width: 0 0 0 3px;
+                        }
+                    }
+
+                    .tags {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .all-tags {
+            display: none;
+        }
+    }
+}

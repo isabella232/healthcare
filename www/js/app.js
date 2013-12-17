@@ -163,7 +163,10 @@ var on_hash_changed = function(new_hash, old_hash) {
     var hash_args = bits[1];
 
     if (hash_type == 'search') {
-        $search_query.val(hash_args);
+        if ($search_query.val() != hash_args) {
+            $search_query.val(hash_args);
+        }
+
         throttled_search(hash_args);
     } else if (hash_type == 'answer') {
         var $faq = $('#faq-' + hash_args);

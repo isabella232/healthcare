@@ -94,7 +94,7 @@ TWITTER = {
     'TEXT': '%s %s @NPRHealth' % (PROJECT_DESCRIPTION, SHARE_URL),
     'URL': '',
     # Will be resized to 120x120, can't be larger than 1MB 
-    # 'IMAGE_URL': ''
+    'IMAGE_URL': 'http://%s/%s/img/promo.png' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 }
 
 FACEBOOK = {
@@ -102,14 +102,14 @@ FACEBOOK = {
     'URL': SHARE_URL,
     'DESCRIPTION': PROJECT_DESCRIPTION,
     # Should be square. No documented restrictions on size
-    # 'IMAGE_URL': TWITTER['IMAGE_URL'],
+    'IMAGE_URL': TWITTER['IMAGE_URL'],
     'APP_ID': '138837436154588'
 }
 
 GOOGLE = {
     # Thumbnail image for Google News / Search.
     # No documented restrictions on resolution or size
-    # 'IMAGE_URL': TWITTER['IMAGE_URL']
+    'IMAGE_URL': TWITTER['IMAGE_URL']
 }
 
 NPR_DFP = {

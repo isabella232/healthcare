@@ -102,7 +102,7 @@ FACEBOOK = {
     'URL': SHARE_URL,
     'DESCRIPTION': PROJECT_DESCRIPTION,
     # Should be square. No documented restrictions on size
-    'IMAGE_URL': TWITTER['IMAGE_URL'],
+    'IMAGE_URL': 'http://%s/%s/img/promo2.png' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG),
     'APP_ID': '138837436154588'
 }
 

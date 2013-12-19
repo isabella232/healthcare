@@ -87,7 +87,6 @@ header {
         .make-md-column(11);
         .make-md-column-offset(1);
 
-
         .adhesion & {
             .make-md-column(10);
         }
@@ -123,13 +122,15 @@ header {
 
 	p {
 		font-size: @font-size-small; 
-		font-weight: 300;
+		font-weight: 400;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 		color: lighten(@gray-light, 15%);
 
         &.byline,
         &.dateblock {
             font-size: 12px;
             color: @gray-light;
+            font-family: @font-family-base;
         }
 		
 		&.byline {
@@ -184,7 +185,7 @@ header {
 .search-container {
     background-color: desaturate(#EBF5F4, 10%);
     padding: @line-height-computed 0;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: @line-height-computed;
 
 
@@ -207,6 +208,7 @@ header {
         .top-searches {
             a {
                 font-weight: 400;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
             }
         }
 
@@ -275,22 +277,22 @@ header {
 
     #search {
         .form-control {
-            font-weight: 300;
+            font-weight: 400;
 
             &::-webkit-input-placeholder {
-               font-weight: 300;
+               font-weight: 400;
             }
 
             &:-moz-placeholder { /* Firefox 18- */
-               font-weight: 300;  
+               font-weight: 400;  
             }
 
             &::-moz-placeholder {  /* Firefox 19+ */
-               font-weight: 300;  
+               font-weight: 400;  
             }
 
             &:-ms-input-placeholder {  
-               font-weight: 300;  
+               font-weight: 400;  
             }
         }
         
@@ -298,9 +300,14 @@ header {
             font-weight: 400;
         }
 
+        p {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+
         .result-count {
             font-size: @font-size-small;
             font-style: italic;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
             color: @gray-light;
         }
     }
@@ -346,7 +353,7 @@ header {
             text-align: center;
             padding: 5px 10px;
             text-transform: uppercase;
-            font-weight: 300;
+            font-weight: 400;
             background: #66A9BF;
             color: #fff;
             font-size: 14px;
@@ -394,7 +401,7 @@ header {
                 color: #fff;
                 display: inline-block;
                 background: #66A9BF;
-                font-weight: 300;
+                font-weight: 400;
                 font-size: 12px;
                 letter-spacing: 0.05em;
                 padding: 5px;
@@ -444,6 +451,7 @@ header {
 				line-height: 1.4;
 				padding-right: 32px + @grid-gutter-width * 2;
                 font-weight: 300;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 				a {
                     display: block;
@@ -462,13 +470,13 @@ header {
 
 					.toggle-answer {
 						display: block;
-                        font-weight: 300;
+                        font-weight: 400;
 						.img-circle;
 						.square(32px);
 						border: 2px solid #66A9BF;
 						color: #66A9BF;
 						text-align: center;
-						line-height: 28px;
+						line-height: 24px;
 						position: absolute;
 						top: 0;
 						right: @grid-gutter-width / 2;
@@ -495,16 +503,8 @@ header {
 				}
 			}
 
-            &.open {
-                .question {
-                    a {
-                        font-weight: bold;
-                    }
-                }
-            }
-
 			.answer-wrapper {
-				font-weight: 300;
+				font-weight: 400;
 				overflow: hidden;
 				width: 100%;
                 max-height: 0;
@@ -539,8 +539,6 @@ header {
                 }
 
                 .question a span {
-                    line-height: 25px;
-
                     &:after {
                         content: '-';
                     }
@@ -557,6 +555,7 @@ header {
 				.make-md-column(8);
 				.make-lg-column(8);
 				padding-bottom: @line-height-computed;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 			}
 
 			.tags {
@@ -625,7 +624,7 @@ header {
         .no-results {
             font-size: @font-size-large;
             color: @gray;
-            font-weight: 300;
+            font-weight: 400;
         }
 	}
 
@@ -670,7 +669,7 @@ footer {
 	font-size: 10px;
 	border-top: 2px solid #e0e0e0;
 	background: #fff; 
-	font-family: Helvetica,Arial,sans-serif;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 	ul { 
 		list-style: none; 

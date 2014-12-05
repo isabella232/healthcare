@@ -145,10 +145,8 @@
 {% block extra_foot %}
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        window.scrollTo(0,0);
-        $('#warning').modal('show');
-    });
+    window.scrollTo(0,0);
+    $('#warning').modal('show');
     window.FAQS = {{ faqs_js|safe }};
 </script>
 

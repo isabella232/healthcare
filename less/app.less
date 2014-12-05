@@ -874,7 +874,7 @@ footer {
 
         .modal-body{
             display:table;
-            padding:10%;
+            padding:6vw 4vw;
             width:100%;
             height:100%;
 
@@ -896,16 +896,22 @@ footer {
     }
 
     h1{
-        font-size:4vmin;
+        font-size:40px;
         text-transform:uppercase;
         font-weight:700;
+        @media (max-width: @screen-sm) {
+            font-size:20px;
+        }
     }
 
     p{
+        max-width:600px;
+        margin:0 auto;
         margin-bottom:5px;
         @media (max-width: @screen-sm) {
             font-size:12px;
             margin-bottom:20px;
+            max-width:400px;
         }
     }
     
